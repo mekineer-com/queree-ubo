@@ -14,6 +14,7 @@ mkdir $DES/js
 cp -R src/js/*.js                  $DES/js/
 cp -R src/js/resources             $DES/js/
 cp -R src/js/codemirror            $DES/js/
+cp -R src/js/queree                $DES/js/
 cp -R src/js/scriptlets            $DES/js/
 cp -R src/js/wasm                  $DES/js/
 cp -R src/lib                      $DES/
@@ -24,3 +25,4 @@ cp src/*.html                      $DES/
 cp platform/common/*.js            $DES/js/
 cp platform/common/*.json          $DES/
 cp LICENSE.txt                     $DES/
+cp THIRD_PARTY_NOTICES.txt         $DES/

@@ -59,7 +59,7 @@ const cacheStorage = (( ) => {
         const missing = [];
         for ( const key of wanted ) {
             if ( pendingWrite.has(key) ) {
-                outbin[key] = pendingWrite.get(key);
+                outbin[key] = pendingWrite.get(key).values[key];
             } else {
                 missing.push(key);
             }
@@ -144,28 +144,49 @@ const cacheStorage = (( ) => {
 
         async set(rawbin) {
             const keys = Object.keys(rawbin);
-            if ( keys.length === 0 ) { return; }
+            if ( keys.length === 0 ) { return true; }
+            // Raw-source writers check this; ordinary derived caches stay best-effort.
+            let stored = true;
             ubolog('cacheStorage.set:', keys.join());
+            const predecessors = new Set();
+            let complete;
+            const write = {
+                values: rawbin,
+                done: new Promise(resolve => { complete = resolve; }),
+            };
             for ( const key of keys ) {
-                pendingWrite.set(key, rawbin[key]);
+                const previous = pendingWrite.get(key);
+                if ( previous !== undefined ) { predecessors.add(previous.done); }
+                pendingWrite.set(key, write);
             }
             try {
+                // Both backends must settle before a newer same-key write starts.
+                await Promise.all(predecessors);
                 const serializedbin = {};
                 const promises = [];
                 for ( const key of keys ) {
                     promises.push(compress(serializedbin, key, rawbin[key]));
                 }
                 await Promise.all(promises);
-                await Promise.all([
+                const results = await Promise.allSettled([
                     cacheAPIs[fastCache].set(rawbin, serializedbin),
                     extensionStorage.set(serializedbin),
                 ]);
+                for ( const result of results ) {
+                    if ( result.status === 'fulfilled' ) { continue; }
+                    stored = false;
+                    ubolog(result.reason);
+                }
             } catch(reason) {
+                stored = false;
                 ubolog(reason);
             }
             for ( const key of keys ) {
+                if ( pendingWrite.get(key) !== write ) { continue; }
                 pendingWrite.delete(key);
             }
+            complete();
+            return stored;
         },
 
         remove(...args) {
@@ -295,12 +316,8 @@ const cacheAPI = (( ) => {
         if ( text === undefined ) { return removeOne(key); }
         const blob = new Blob([ text ], { type: 'text/plain;charset=utf-8'});
         const cache = await getAPI();
-        if ( cache === null ) { return; }
-        return cache
-            .put(keyToURL(key), new Response(blob))
-            .catch(reason => {
-                ubolog(reason);
-            });
+        if ( cache === null ) { throw new Error('CacheStorage API not available'); }
+        return cache.put(keyToURL(key), new Response(blob));
     };
 
     const removeOne = async key => {
@@ -358,7 +375,9 @@ const cacheAPI = (( ) => {
             for ( const key of keys ) {
                 promises.push(setOne(key, bin[key]));
             }
-            return Promise.all(promises);
+            const results = await Promise.allSettled(promises);
+            const failure = results.find(result => result.status === 'rejected');
+            if ( failure !== undefined ) { throw failure.reason; }
         },
 
         remove(keys) {
@@ -433,9 +452,7 @@ const memoryStorage = (( ) => {
         async set(rawbin, serializedbin) {
             const bin = shouldCache(serializedbin);
             if ( bin === undefined ) { return; }
-            return sessionStorage.set(bin).catch(reason => {
-                ubolog(reason);
-            });
+            return sessionStorage.set(bin);
         },
 
         remove(...args) {
@@ -608,24 +625,21 @@ const idbStorage = (( ) => {
         const keys = Object.keys(inbin);
         if ( keys.length === 0 ) { return; }
         const db = await getDb();
-        if ( db === null ) { return; }
-        return new Promise(resolve => {
+        if ( db === null ) { throw new Error('IndexedDB not available'); }
+        return new Promise((resolve, reject) => {
             const entries = [];
             for ( const key of keys ) {
                 entries.push({ key, value: inbin[key] });
             }
             const transaction = db.transaction(STORAGE_NAME, 'readwrite');
-            transaction.oncomplete =
-            transaction.onerror =
-            transaction.onabort = ( ) => {
-                resolve();
+            transaction.oncomplete = ( ) => resolve();
+            transaction.onerror = transaction.onabort = ( ) => {
+                reject(transaction.error || new Error('IndexedDB write aborted'));
             };
             const table = transaction.objectStore(STORAGE_NAME);
             for ( const entry of entries ) {
                 table.put(entry);
             }
-        }).catch(reason => {
-            ubolog(`idbStorage() / setEntries() failed: ${reason}`);
         });
     };
 

@@ -3,5 +3,6 @@
 __pycache__/
 node_modules/
 /dist/build/
+/dist/releases/
 /tmp/
 .DS_Store

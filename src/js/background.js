@@ -21,6 +21,8 @@
 
 /******************************************************************************/
 
+/* globals browser */
+
 import {
     domainFromHostname,
     hostnameFromURI,
@@ -28,6 +30,7 @@ import {
 } from './uri-utils.js';
 
 import { FilteringContext } from './filtering-context.js';
+import { defaultPersonalCategories } from './queree/personal-categories.js';
 import logger from './logger.js';
 import { ubologSet } from './console.js';
 
@@ -79,6 +82,7 @@ const hiddenSettingsDefault = {
     popupPanelHeightMode: 0,
     popupPanelLockedSections: 0,
     popupPanelOrientation: 'unset',
+    quereeKeepUnresolvedTabs: false,
     requestJournalProcessPeriod: 1000,
     requestStatsDisabled: false,
     selfieDelayInSeconds: 53,
@@ -118,6 +122,18 @@ const userSettingsDefault = {
     parseAllABPHideFilters: true,
     popupPanelSections: 0b111,
     prefetchingDisabled: true,
+    quereeEnabled: true,
+    quereeRequireSingleDomain: false,
+    quereeExcludeAdvertisingSignals: true,
+    quereeExcludeCrossSiteTracking: true,
+    quereeExcludeShoppingSignals: true,
+    quereeIncludeCommercialCorporate: false,
+    quereePersonalCategories: defaultPersonalCategories,
+    quereeIncludeGovernmentEducation: true,
+    quereeIncludeProfessionalPublications: true,
+    quereeIncludePublicInterestOrganizations: true,
+    quereeCleanHistory: true,
+    quereeSimultaneousInspections: 6,
     requestLogMaxEntries: 1000,
     showIconBadge: true,
     suspendUntilListsAreLoaded: vAPI.Net.canSuspend(),
@@ -215,6 +231,7 @@ const µBlock = {  // jshint ignore:line
     pslAssetKey: 'public_suffix_list.dat',
 
     selectedFilterLists: [],
+    quereeFilterLists: new Set(),
     availableFilterLists: {},
     badLists: new Map(),
 

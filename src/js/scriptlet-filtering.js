@@ -21,14 +21,19 @@
 
 /******************************************************************************/
 
+/* globals browser */
+
 import {
     domainFromHostname,
     hostnameFromURI,
 } from './uri-utils.js';
 
+import {
+    onOrdinaryCookieStoresChanged,
+    ordinaryCookieStoreIds,
+} from './queree/inspection-context.js';
 import { MRUCache } from './mrucache.js';
 import { ScriptletFilteringEngine } from './scriptlet-filtering-core.js';
-
 import logger from './logger.js';
 import { onBroadcast } from './broadcast.js';
 import { redirectEngine as reng } from './redirect-engine.js';
@@ -43,7 +48,18 @@ const contentScriptRegisterer = {
     register(hostname, code) {
         if ( browser.contentScripts === undefined ) { return false; }
         if ( hostname === '' ) { return false; }
+        const cookieStoreId = ordinaryCookieStoreIds();
+        // Without containers, automatic scripts also reach inspection tabs.
+        if ( cookieStoreId === null ) { return false; }
         const details = this.hostnameToDetails.get(hostname);
+        if ( cookieStoreId === undefined ) {
+            if ( details?.code === code ) { return false; }
+            if ( details !== undefined ) { this.unregisterHandle(details.handle); }
+            this.hostnameToDetails.set(hostname, {
+                id: this.id++, handle: undefined, code,
+            });
+            return false;
+        }
         if ( details !== undefined ) {
             if ( code === details.code ) {
                 return details.handle instanceof Promise === false;
@@ -52,19 +68,22 @@ const contentScriptRegisterer = {
             this.hostnameToDetails.delete(hostname);
         }
         const id = this.id++;
-        const promise = browser.contentScripts.register({
+        const options = {
+            cookieStoreId,
             js: [ { code } ],
             allFrames: true,
             matches: [ `*://*.${hostname}/*` ],
             matchAboutBlank: true,
             runAt: 'document_start',
-        }).then(handle => {
+        };
+        const promise = browser.contentScripts.register(options).then(handle => {
             const details = this.hostnameToDetails.get(hostname);
-            if ( details === undefined ) { return; }
-            if ( details.id !== id ) { return; }
-            details.handle = handle;
+            if ( details?.id === id ) { details.handle = handle; }
+            return handle;
         }).catch(( ) => {
-            this.hostnameToDetails.delete(hostname);
+            if ( this.hostnameToDetails.get(hostname)?.id === id ) {
+                this.hostnameToDetails.delete(hostname);
+            }
         });
         this.hostnameToDetails.set(hostname, { id, handle: promise, code });
         return false;
@@ -94,7 +113,18 @@ const contentScriptRegisterer = {
         }
         this.hostnameToDetails.clear();
     },
+    refreshCookieStores() {
+        const registrations = Array.from(
+            this.hostnameToDetails,
+            ([ hostname, details ]) => [ hostname, details.code ]
+        );
+        this.reset();
+        for ( const [ hostname, code ] of registrations ) {
+            this.register(hostname, code);
+        }
+    },
     unregisterHandle(handle) {
+        if ( handle === undefined ) { return; }
         if ( handle instanceof Promise ) {
             handle.then(handle => {
                 if ( handle ) { handle.unregister(); }
@@ -104,6 +134,8 @@ const contentScriptRegisterer = {
         }
     },
 };
+
+onOrdinaryCookieStoresChanged(( ) => contentScriptRegisterer.refreshCookieStores());
 
 /******************************************************************************/
 
@@ -357,7 +389,10 @@ export class ScriptletFilteringEngineEx extends ScriptletFilteringEngine {
         }
         const code = contentScript.join('\n\n');
 
-        const isAlreadyInjected = contentScriptRegisterer.register(hostname, code);
+        const isAlreadyInjected = contentScriptRegisterer.register(
+            hostname,
+            code
+        );
         if ( isAlreadyInjected !== true ) {
             vAPI.tabs.executeScript(details.tabId, {
                 code,

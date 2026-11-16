@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint --no-warn-ignored --ignore-pattern \"**/lib/\" --ignore-pattern \"**/npm/\" -- \"./src/js/*.js\" \"./src/js/**/*.js\" \"./**/*.json\" \"./platform/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/queree/doaj-sources.mjs && node test/queree/generated-files.mjs && node test/queree/contribution.mjs && node test/queree/contribution-runtime.mjs && node test/queree/corporate-sources.mjs && node test/queree/irs-sources.mjs && node test/queree/decision-cache.mjs && node test/queree/document-capture.mjs && node test/queree/mobile-inspection-tabs.mjs && node test/queree/inspection-retention.mjs && node test/queree/inspection-context.mjs && node test/queree/inspection-history.mjs && node test/queree/inspection-tab-recovery.mjs && node test/queree/inspection-dns.mjs && node test/queree/inspection-probes.mjs && node test/queree/inspection-popups.mjs && node test/queree/scriptlet-registration.mjs && node test/queree/commerce-fingerprints.mjs && node test/queree/commerce-probe.mjs && node test/queree/firefox-fixture.mjs && node test/queree/personal-categories.mjs && node test/queree/pagination.mjs && node test/queree/result-links.mjs && node test/queree/dashboard.mjs && node test/queree/strict-blocking.mjs && node test/queree/tracking-profile.mjs && node test/queree/malware-profile.mjs && node test/queree/controller-malware.mjs && node test/queree/ad-profile.mjs && sh test/queree/release-gate.sh"
   },
   "repository": {
     "type": "git",

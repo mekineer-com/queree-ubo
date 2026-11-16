@@ -1,0 +1,22 @@
+[
+  {
+    "id": "2026-11-14-altru-health-foundation-2024-website",
+    "corrected_at": "2026-11-14",
+    "ein": "450368330",
+    "tax_period_end": "2024-12-31",
+    "submitted_at": "2025-11-07T20:23:51Z",
+    "reported_website": "WWW.ALTRU.COM",
+    "corrected_website": "https://www.altru.org/",
+    "declaration_source": "https://nccs-efile.s3.us-east-1.amazonaws.com/public/efile_v3_1/F9-P00-T00-HEADER-2024.CSV",
+    "reference_snapshot_sha256": "7b320f832e7f43fdd4de2a4648a69c911e4f03d20a05899684768ef803eed952",
+    "evidence": {
+      "prior_declaration_source": "https://nccs-efile.s3.us-east-1.amazonaws.com/public/efile_v3_1/F9-P00-T00-HEADER-2023.CSV",
+      "prior_snapshot_sha256": "5ffaff6111e745305cc66bceae33fc7570d91609fca5adecba519842d7ab4f3a",
+      "prior_tax_period_end": "2023-12-31",
+      "prior_submitted_at": "2024-11-08T14:42:04Z",
+      "prior_reported_website": "WWW.ALTRU.ORG",
+      "foundation_page": "https://www.altru.org/about-us/support-altru/altru-health-foundation"
+    },
+    "reason": "Correct the documented .com typo in this foundation declaration, not the host's classification. Preserve independent claims for altru.org."
+  }
+]

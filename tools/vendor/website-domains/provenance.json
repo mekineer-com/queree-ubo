@@ -1,0 +1,75 @@
+{
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "verified_at": "2026-11-14",
+  "sources": [
+    {
+      "name": "ut1_shopping",
+      "module": "commercial-domains.js",
+      "source": "https://github.com/olbat/ut1-blacklists",
+      "format": "domains",
+      "files": [
+        {
+          "file": "ut1-shopping-domains",
+          "path": "blacklists/shopping/domains",
+          "commit": "03501c64d230df9d84124176558d758351027be1",
+          "source": "https://raw.githubusercontent.com/olbat/ut1-blacklists/03501c64d230df9d84124176558d758351027be1/blacklists/shopping/domains",
+          "bytes": 632584,
+          "sha256": "3e3f8e3d6c366e13b1a7b4e8d431442751488de93c345ee424183e57370cad70",
+          "git_blob_sha": "1efe0f9ae16d8777e5ebd3c0ae28ba0bbaa49441"
+        }
+      ]
+    },
+    {
+      "name": "ut1_bank",
+      "module": "commercial-domains.js",
+      "source": "https://github.com/olbat/ut1-blacklists",
+      "format": "domains",
+      "files": [
+        {
+          "file": "ut1-bank-domains",
+          "path": "blacklists/bank/domains",
+          "commit": "03501c64d230df9d84124176558d758351027be1",
+          "source": "https://raw.githubusercontent.com/olbat/ut1-blacklists/03501c64d230df9d84124176558d758351027be1/blacklists/bank/domains",
+          "bytes": 100146,
+          "sha256": "6028b816d861fa6ddb8fc450658c91388ca99f131b9fa73b79c0bcd57d5c7921",
+          "git_blob_sha": "ecf0e38cec5672ed16447a5b2e1ae7d11e5a89c4"
+        }
+      ]
+    },
+    {
+      "name": "ut1_press",
+      "module": "institutional-domains.js",
+      "source": "https://github.com/olbat/ut1-blacklists",
+      "format": "domains",
+      "files": [
+        {
+          "file": "ut1-press-domains",
+          "path": "blacklists/press/domains",
+          "commit": "03501c64d230df9d84124176558d758351027be1",
+          "source": "https://raw.githubusercontent.com/olbat/ut1-blacklists/03501c64d230df9d84124176558d758351027be1/blacklists/press/domains",
+          "bytes": 83066,
+          "sha256": "d6586d33219000621678d531472dbea567a193c54ca47cf2502de7a1e6d35a51",
+          "git_blob_sha": "963dc362a8e92517ca9afd1b8c5fa19a33ccb964"
+        }
+      ]
+    },
+    {
+      "name": "dropship_retailers",
+      "module": "commercial-domains.js",
+      "source": "https://gitlab.com/Lalaggi/dropship-filters",
+      "format": "dropship-retailers",
+      "files": [
+        {
+          "file": "dropship-retailers.json",
+          "path": "retailers.json",
+          "commit": "e1a53730f2bc807b2f3bc5e426456375c0b078e2",
+          "source": "https://gitlab.com/Lalaggi/dropship-filters/-/raw/e1a53730f2bc807b2f3bc5e426456375c0b078e2/retailers.json",
+          "bytes": 15552,
+          "sha256": "eabc8220ee00cbd607891460293f5ff50ee9dd0097eb99a5e2859f10110325c4",
+          "git_blob_sha": "ab9d35691e43e17a38b03b260adc46627e27ef36"
+        }
+      ]
+    }
+  ]
+}

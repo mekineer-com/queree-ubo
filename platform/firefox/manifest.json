@@ -1,5 +1,5 @@
 {
-  "author": "Raymond Hill & contributors",
+  "author": "Team GhostMaker",
   "background": {
     "page": "background.html"
   },
@@ -11,19 +11,25 @@
       "32": "img/icon_32.png",
       "64": "img/icon_64.png"
     },
-    "default_title": "uBlock Origin",
+    "default_title": "uBlock Origin + Quer.ee",
     "default_popup": "popup-fenix.html"
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "uBlock0@raymondhill.net",
-      "strict_min_version": "115.0",
+      "id": "queree@mekineer.com",
+      "strict_min_version": "140.0",
       "data_collection_permissions": {
-        "required": [ "none" ]
+        "required": [ "none" ],
+        "optional": [
+          "browsingActivity",
+          "authenticationInfo",
+          "technicalAndInteraction",
+          "websiteContent"
+        ]
       }
     },
     "gecko_android": {
-      "strict_min_version": "115.0"
+      "strict_min_version": "142.0"
     }
   },
   "commands": {
@@ -93,10 +99,46 @@
       ],
       "run_at": "document_idle",
       "all_frames": false
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "include_globs": [
+        "*://www.google.*/*",
+        "*://www.bing.com/*",
+        "*://duckduckgo.com/*",
+        "*://yandex.*/*",
+        "*://www.mojeek.com/*",
+        "*://quer.ee/*"
+      ],
+      "js": [
+        "/js/queree/search-links.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://www.google.com/search*",
+        "https://www.google.com.pe/search*",
+        "https://www.google.com/sorry/*",
+        "https://www.google.com.pe/sorry/*",
+        "https://www.bing.com/search*",
+        "https://www.bing.com/news/search*",
+        "https://www.bing.com/turing/*"
+      ],
+      "js": [
+        "/js/queree/search-results.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
     }
   ],
   "default_locale": "en",
   "description": "__MSG_extShortDesc__",
+  "homepage_url": "https://quer.ee/",
   "icons": {
     "16": "img/ublock.svg",
     "32": "img/ublock.svg",
@@ -106,17 +148,22 @@
     "128": "img/ublock.svg"
   },
   "manifest_version": 2,
-  "name": "uBlock Origin",
+  "name": "uBlock Origin + Quer.ee",
   "options_ui": {
     "page": "dashboard.html",
     "open_in_tab": true
   },
   "permissions": [
     "alarms",
+    "contextualIdentities",
+    "cookies",
     "dns",
+    "history",
     "menus",
     "privacy",
+    "sessions",
     "storage",
+    "tabHide",
     "tabs",
     "unlimitedStorage",
     "webNavigation",
@@ -124,7 +171,7 @@
     "webRequestBlocking",
     "<all_urls>"
   ],
-  "short_name": "uBlock₀",
+  "short_name": "Quer.ee",
   "sidebar_action": {
     "default_title": "__MSG_statsPageName__",
     "default_panel": "logger-ui.html",

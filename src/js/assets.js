@@ -754,23 +754,53 @@ async function assetCacheWrite(assetKey, content, options = {}) {
 
     const { resourceTime, url } = options;
     const entry = cacheDict[assetKey] || {};
-    entry.writeTime = entry.readTime = Date.now();
-    entry.resourceTime = resourceTime || 0;
-    if ( typeof url === 'string' ) {
-        entry.remoteURL = url;
+    const previousEntry = cacheDict[assetKey] && { ...entry };
+    const updating = options.requirePersistence === true;
+    try {
+        if ( updating ) {
+            await fireNotification('before-asset-cache-write', { assetKey, content });
+        }
+        entry.writeTime = entry.readTime = Date.now();
+        entry.resourceTime = resourceTime || 0;
+        if ( typeof url === 'string' ) {
+            entry.remoteURL = url;
+        }
+        cacheDict[assetKey] = entry;
+
+        try {
+            const stored = await cacheStorage.set({ [`cache/${assetKey}`]: content });
+            if ( stored !== true ) {
+                if ( options.requirePersistence === true ) {
+                    throw new Error(`Asset cache write failed: ${assetKey}`);
+                }
+                // Best-effort caches may miss, but must not serve an older compiled value.
+                delete cacheDict[assetKey];
+                saveAssetCacheRegistry(3);
+                return { assetKey, content };
+            }
+        } catch (reason) {
+            // Keep the old resource eligible for the native full-download fallback.
+            if ( previousEntry === undefined ) {
+                delete cacheDict[assetKey];
+            } else {
+                cacheDict[assetKey] = { ...previousEntry, writeTime: 0 };
+            }
+            throw reason;
+        }
+
+        saveAssetCacheRegistry(3);
+
+        const result = { assetKey, content };
+        // https://github.com/uBlockOrigin/uBlock-issues/issues/248
+        if ( options.silent !== true ) {
+            fireNotification('after-asset-updated', result);
+        }
+        return result;
+    } finally {
+        if ( updating ) {
+            fireNotification('after-asset-cache-write', { assetKey });
+        }
     }
-    cacheDict[assetKey] = entry;
-
-    await cacheStorage.set({ [`cache/${assetKey}`]: content });
-
-    saveAssetCacheRegistry(3);
-
-    const result = { assetKey, content };
-    // https://github.com/uBlockOrigin/uBlock-issues/issues/248
-    if ( options.silent !== true ) {
-        fireNotification('after-asset-updated', result);
-    }
-    return result;
 }
 
 async function assetCacheRemove(pattern, options = {}) {
@@ -1047,21 +1077,28 @@ async function getRemote(assetKey, options = {}) {
         }
 
         // Success
-        assetCacheWrite(assetKey, result.content, {
-            url: contentURL,
-            resourceTime: result.resourceTime || 0,
-        });
+        try {
+            await assetCacheWrite(assetKey, result.content, {
+                url: contentURL,
+                resourceTime: result.resourceTime || 0,
+                requirePersistence: true,
+            });
 
-        if ( assetDetails.content === 'filters' ) {
-            const metadata = extractMetadataFromList(result.content, [
-                'Last-Modified',
-                'Expires',
-                'Diff-Name',
-                'Diff-Path',
-                'Diff-Expires',
-            ]);
-            metadata.diffUpdated = undefined;
-            assetCacheSetDetails(assetKey, metadata);
+            if ( assetDetails.content === 'filters' ) {
+                const metadata = extractMetadataFromList(result.content, [
+                    'Last-Modified',
+                    'Expires',
+                    'Diff-Name',
+                    'Diff-Path',
+                    'Diff-Expires',
+                ]);
+                metadata.diffUpdated = undefined;
+                await assetCacheSetDetails(assetKey, metadata);
+            }
+        } catch (reason) {
+            ubolog(reason);
+            error = String(reason);
+            break;
         }
 
         registerAssetSource(assetKey, { birthtime: undefined, error: undefined });
@@ -1074,7 +1111,7 @@ async function getRemote(assetKey, options = {}) {
     }
 
     if ( stale ) {
-        assetCacheSetDetails(assetKey, { writeTime: cacheDetails.resourceTime });
+        await assetCacheSetDetails(assetKey, { writeTime: cacheDetails.resourceTime });
     }
 
     return reportBack('');
@@ -1188,6 +1225,7 @@ const updaterFetched = new Set();
 let updaterStatus;
 let updaterAssetDelay = updaterAssetDelayDefault;
 let updaterAuto = false;
+let updaterPromise;
 
 const getAssetDiffDetails = assetKey => {
     const out = { assetKey };
@@ -1252,21 +1290,26 @@ async function diffUpdater() {
     ubolog('Diff updater: cycle start');
     return new Promise(resolve => {
         let pendingOps = 0;
+        const pendingTasks = [];
         const terminate = error => {
+            if ( worker.onmessage === null ) { return; }
+            worker.onmessage = null;
             worker.terminate();
-            resolve();
+            // Raw writes notify the native compiler; drain them before reloading.
+            resolve(Promise.allSettled(pendingTasks));
             if ( typeof error !== 'string' ) { return; }
             ubolog(`Diff updater: terminate because ${error}`);
         };
-        const checkAndCorrectDiffPath = data => {
+        const checkAndCorrectDiffPath = async data => {
             if ( typeof data.text !== 'string' ) { return; }
             if ( data.text === '' ) { return; }
             const metadata = extractMetadataFromList(data.text, [ 'Diff-Path' ]);
             if ( metadata instanceof Object === false ) { return; }
             if ( metadata.diffPath === data.patchPath ) { return; }
-            assetCacheSetDetails(data.assetKey, metadata);
+            await assetCacheSetDetails(data.assetKey, metadata);
         };
         const worker = new Worker('js/diff-updater.js');
+        worker.onerror = ev => terminate(ev.message);
         worker.onmessage = ev => {
             const data = ev.data || {};
             if ( data.what === 'ready' ) {
@@ -1285,14 +1328,16 @@ async function diffUpdater() {
             }
             if ( data.status === 'needtext' ) {
                 ubolog('Diff updater: need text for', data.assetKey);
-                assetCacheRead(data.assetKey).then(result => {
+                pendingTasks.push(assetCacheRead(data.assetKey).then(async result => {
+                    if ( worker.onmessage === null ) { return; }
                     // https://bugzilla.mozilla.org/show_bug.cgi?id=1929326#c9
                     //   Must never be set to undefined!
                     data.text = result.content || '';
                     data.status = undefined;
-                    checkAndCorrectDiffPath(data);
+                    await checkAndCorrectDiffPath(data);
+                    if ( worker.onmessage === null ) { return; }
                     worker.postMessage(data);
-                });
+                }).catch(reason => { terminate(String(reason)); }));
                 return;
             }
             if ( data.status === 'updated' ) {
@@ -1304,17 +1349,21 @@ async function diffUpdater() {
                     'Diff-Path',
                     'Diff-Expires',
                 ]);
-                assetCacheWrite(data.assetKey, data.text, {
+                pendingTasks.push(assetCacheWrite(data.assetKey, data.text, {
                     resourceTime: metadata.lastModified || 0,
-                });
-                metadata.diffUpdated = true;
-                assetCacheSetDetails(data.assetKey, metadata);
-                updaterUpdated.push(data.assetKey);
+                    requirePersistence: true,
+                }).then(async () => {
+                    metadata.diffUpdated = true;
+                    await assetCacheSetDetails(data.assetKey, metadata);
+                    updaterUpdated.push(data.assetKey);
+                }).catch(reason => { ubolog(reason); }));
             } else if ( data.error ) {
                 ubolog(`Diff updater: failed to update ${data.assetKey} using ${data.patchPath}\n\treason: ${data.error}`);
             } else if ( data.status === 'nopatch-yet' || data.status === 'nodiff' ) {
                 ubolog(`Diff updater: skip update of ${data.assetKey} using ${data.patchPath}\n\treason: ${data.status}`);
-                assetCacheSetDetails(data.assetKey, { writeTime: data.writeTime });
+                pendingTasks.push(assetCacheSetDetails(data.assetKey, {
+                    writeTime: data.writeTime,
+                }).catch(reason => { ubolog(reason); }));
                 broadcast({
                     what: 'assetUpdated',
                     key: data.assetKey,
@@ -1346,11 +1395,9 @@ function updateFirst() {
     updaterStatus = 'updating';
     updaterFetched.clear();
     updaterUpdated.length = 0;
-    diffUpdater().catch(reason => {
+    updaterPromise = diffUpdater().catch(reason => {
         ubolog(reason);
-    }).finally(( ) => {
-        updateNext();
-    });
+    }).then(updateNext).catch(reason => { ubolog(reason); });
 }
 
 async function getUpdateCandidates() {
@@ -1434,7 +1481,11 @@ async function updateNext() {
     updaterTimer.on(updaterAssetDelay);
 }
 
-const updaterTimer = vAPI.defer.create(updateNext);
+const updaterTimer = vAPI.defer.create(() => {
+    updaterPromise = Promise.resolve(updaterPromise).then(() => {
+        if ( updaterStatus === 'updating' ) { return updateNext(); }
+    }).catch(reason => { ubolog(reason); });
+});
 
 function updateDone() {
     const assetKeys = updaterUpdated.slice(0);

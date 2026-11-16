@@ -25,6 +25,7 @@ import {
     originFromURI,
 } from './uri-utils.js';
 
+import { filterInspectionPopup, isInspectionTab } from './queree/controller.js';
 import {
     sessionFirewall,
     sessionSwitches,
@@ -35,6 +36,7 @@ import { PageStore } from './pagestore.js';
 import contextMenu from './contextmenu.js';
 import { i18n$ } from './i18n.js';
 import logger from './logger.js';
+import { markInspectionTab } from './queree/inspection-tab-recovery.js';
 import scriptletFilteringEngine from './scriptlet-filtering.js';
 import staticNetFilteringEngine from './static-net-filtering.js';
 import webext from './webext.js';
@@ -556,6 +558,16 @@ housekeep itself.
 
     const onTabCreated = async function(createDetails) {
         const { sourceTabId, sourceFrameId, tabId } = createDetails;
+        if ( isInspectionTab(sourceTabId) ) {
+            if ( await filterInspectionPopup(sourceTabId, tabId, createDetails.url, sourceFrameId) === false ) { return; }
+            try {
+                await markInspectionTab(tabId);
+            } catch {
+                // A failed marker write must not leave the popup open.
+            }
+            await vAPI.tabs.remove(tabId);
+            return;
+        }
         const popup = popupCandidates.get(tabId);
         if ( popup === undefined ) {
             let openerDetails;
@@ -925,6 +937,7 @@ vAPI.Tabs = class extends vAPI.Tabs {
         const pageStore = µb.pageStoreFromTabId(tabId);
         if ( pageStore === null ) { return; }
         pageStore.setFrameURL(details);
+        if ( isInspectionTab(tabId) ) { return; }
         if ( pageStore.getNetFilteringSwitch() ) {
             details.ancestors = pageStore.getFrameAncestorDetails(frameId);
             scriptletFilteringEngine.injectNow(details);

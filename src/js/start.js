@@ -19,6 +19,8 @@
     Home: https://github.com/gorhill/uBlock
 */
 
+/* globals browser */
+
 import './vapi-common.js';
 import './vapi-background.js';
 import './vapi-background-ext.js';
@@ -154,6 +156,10 @@ const onVersionReady = async lastVersion => {
     // Special case: first installation
     if ( lastVersionInt === 0 ) {
         vAPI.net.unsuspend({ all: true, discard: true });
+        vAPI.tabs.open({
+            url: '/dashboard.html#queree.html',
+            select: true,
+        });
         return;
     }
 

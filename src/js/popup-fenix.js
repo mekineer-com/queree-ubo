@@ -958,7 +958,7 @@ const gotoURL = function(ev) {
 
     ev.preventDefault();
 
-    let url = dom.attr(ev.target, 'href');
+    let url = dom.attr(ev.currentTarget, 'href');
     if (
         url === 'logger-ui.html#_' &&
         typeof popupData.tabId === 'number'

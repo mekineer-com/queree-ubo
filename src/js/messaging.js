@@ -22,6 +22,8 @@
 import * as s14e from './s14e-serializer.js';
 import * as sfp from './static-filtering-parser.js';
 
+import { isInspectionTab } from './queree/controller.js';
+// eslint-disable-next-line sort-imports -- Preserve startup dependency evaluation order.
 import {
     domainFromHostname,
     domainFromURI,
@@ -29,6 +31,9 @@ import {
     isNetworkURI,
 } from './uri-utils.js';
 
+import { registerQuereeMessaging } from './queree/messaging.js';
+
+// eslint-disable-next-line sort-imports -- Preserve startup dependency evaluation order.
 import {
     permanentFirewall,
     permanentSwitches,
@@ -653,6 +658,7 @@ const retrieveContentScriptParameters = async function(sender, request) {
     if ( µb.readyToFilter !== true ) { return; }
     const { tabId, frameId } = sender;
     if ( tabId === undefined || frameId === undefined ) { return; }
+    if ( isInspectionTab(tabId) ) { return {}; }
 
     const pageStore = µb.pageStoreFromTabId(tabId);
     if ( pageStore === null || pageStore.getNetFilteringSwitch() === false ) {
@@ -2154,6 +2160,13 @@ vAPI.messaging.listen({
 
 // <<<<< end of local scope
 }
+
+/******************************************************************************/
+/******************************************************************************/
+
+// Channel: queree
+
+registerQuereeMessaging();
 
 
 /******************************************************************************/

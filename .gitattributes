@@ -1,0 +1,3 @@
+assets/queree/*.txt -text
+assets/queree/website-lists/affiliate-publishers/*.txt -text -whitespace
+tools/vendor/website-domains/* -text

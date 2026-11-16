@@ -1,0 +1,6 @@
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+SELECT DISTINCT ?item ?website WHERE {
+  ?item wdt:P856 ?website .
+  FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
+  FILTER(REGEX(STR(?website), "^https?://[^/?#]+/?$", "i"))
+}

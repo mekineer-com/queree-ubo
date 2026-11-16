@@ -94,6 +94,9 @@ class CompiledListReader {
             const sectionId = match[1];
             const beg = match.index + match[0].length;
             const end = raw.indexOf(blockEndPrefix + sectionId, beg);
+            if ( end === -1 ) {
+                throw new Error(`Compiled filter block is incomplete: ${sectionId}`);
+            }
             this.blocks.set(sectionId, raw.slice(beg, end));
             reBlockStart.lastIndex = end;
             match = reBlockStart.exec(raw);

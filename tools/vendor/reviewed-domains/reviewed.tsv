@@ -1,0 +1,416 @@
+domain	category	organisation	evidence	reason
+2k.com	commercial_corporate	2K	https://www.2k.com/en-US/	Commercial video game publisher; multiple game claims point to its shared site.
+3ds.com	commercial_corporate	Dassault Systemes	https://www.3ds.com/	Corporate software group; BIOVIA is part of the group, not a separate site owner.
+aachen.de	government_education	City of Aachen	https://www.aachen.de/	Municipal portal; the company declaration concerns a department on that portal.
+about.gitlab.com	commercial_corporate	GitLab	https://about.gitlab.com/company/	The about host represents GitLab Inc., despite its open-source software and community.
+about.google	commercial_corporate	Google	https://about.google/google-in-japan/	Google's corporate information domain; Japan is a regional page.
+accenture.com	commercial_corporate	Accenture	https://www.accenture.com/	Corporate consulting and technology services company.
+advantest.com	commercial_corporate	Advantest	https://www.advantest.com/	Semiconductor test-equipment company; regional company records concern the same business.
+ae.com	commercial_corporate	American Eagle Outfitters	https://www.ae.com/	Retail company website; Aerie is a brand within the business.
+ainj.co.jp	commercial_corporate	AIN Group	https://www.ainj.co.jp/	Pharmacy business group; holding and operating-company records do not change the site category.
+airasia.com	commercial_corporate	AirAsia	https://www.airasia.com/	Commercial airline group website shared by its regional airlines.
+airbus.com	commercial_corporate	Airbus	https://www.airbus.com/en/products-services/commercial-aircraft	Aerospace corporation; aircraft and helicopters are divisions of the business.
+aircanada.com	commercial_corporate	Air Canada	https://www.aircanada.com	Commercial airline; Aeroplan is a service within the airline's domain.
+airliquide.com	commercial_corporate	Air Liquide	https://www.airliquide.com/group/activities/large-industries	The group site belongs to the industrial gases company.
+ajuntament.barcelona.cat	government_education	Barcelona City Council	http://ajuntament.barcelona.cat/fomentdeciutat	A municipal company page is hosted by Barcelona's city government.
+akenerji.com.tr	commercial_corporate	Akenerji	https://www.akenerji.com.tr/	Energy company website; the records describe related operating entities.
+allabolag.se	commercial_corporate	Allabolag	https://www.allabolag.se/	Commercial business-information service; a listed organisation's profile does not own the service.
+allstate.com	commercial_corporate	Allstate	https://www.allstate.com/	Corporate insurance and financial services company.
+alphapolis.co.jp	commercial_corporate	AlphaPolis	https://www.alphapolis.co.jp/company	Corporate publishing and entertainment business.
+am.jpmorgan.com	commercial_corporate	J.P. Morgan Asset Management	https://am.jpmorgan.com/gb/en/asset-management/per/funds/investment-trusts	An investment trust page is on the bank group's commercial asset-management host.
+amazon.com	commercial_corporate	Amazon	https://www.amazon.com/	Corporate retail and technology platform.
+ana.co.jp	commercial_corporate	All Nippon Airways	https://www.ana.co.jp/	Airline website; the Omachi city record does not turn the airline into a municipal website.
+anwb.nl	public_interest_organization	ANWB	https://www.anwb.nl	Dutch motorists' membership association; medical air assistance is one service, not the whole organisation.
+apple.com	commercial_corporate	Apple	https://www.apple.com/	Corporate website shared by Apple regional entities.
+ar.mih.eg	commercial_corporate	Metallurgical Industries Holding	https://ar.mih.eg/	Industrial holding-company website, not a government information portal.
+archiviostorico.telecomitalia.it	commercial_corporate	Telecom Italia historical archive	http://archiviostorico.telecomitalia.it/guida-all-archivio-storico/gruppo-elettrico-sip-1899-1964	The historical archive is hosted by the telecommunications company, not by each historical company it describes.
+argentina.gob.ar	government_education	Government of Argentina	https://www.argentina.gob.ar/	National government portal; railway companies occupy subpages.
+asahi.com	commercial_corporate	Asahi Shimbun Company	https://www.asahi.com/corporate/	Company-owned newspaper and media business.
+asics.com	commercial_corporate	ASICS	https://www.asics.com/	Sportswear corporation; Japan and Playsure are regional or product pages.
+astrazeneca.com	commercial_corporate	AstraZeneca	https://www.astrazeneca.com/country-sites/switzerland.html	AstraZeneca is a pharmaceutical company; country pages are part of its group site.
+atria.fi	commercial_corporate	Atria	https://www.atria.fi/	Food-industry company website; group and operating-company claims are related.
+au.com	commercial_corporate	au	https://www.au.com	Telecommunications service brand; the Okinawa Cellular path is one regional business.
+auchan.fr	commercial_corporate	Auchan	https://www.auchan.fr/nos-magasins?types=PROXY	Retail company's French site; proximity stores are one store format.
+avast.com	commercial_corporate	Avast	https://www.avast.com/about	Commercial cybersecurity software business.
+avg.com	commercial_corporate	AVG	https://www.avg.com/profile	Commercial cybersecurity software brand.
+baesystems.com	commercial_corporate	BAE Systems	https://www.baesystems.com/en-us/our-company/inc-businesses/platforms-and-services	The host is the defense and aerospace company's site.
+banamex.com	commercial_corporate	Banamex	https://www.banamex.com/compromiso-social/informes-de-transparencia.html	The social responsibility page is on the bank's commercial domain.
+banquepopulaire.fr	commercial_corporate	Banque Populaire	https://www.banquepopulaire.fr/	Banking network; cooperative structure and Crédit Maritime affiliation do not change the bank grouping.
+bayer.com	commercial_corporate	Bayer	https://www.bayer.com/nl/be/bayer-in-belgie	Pharmaceutical and life-sciences corporation; Belgium is a regional page.
+bbva.es	commercial_corporate	BBVA	https://www.bbva.es/	Bank website; bank classifications remain Corporations.
+belkin.com	commercial_corporate	Belkin	https://www.belkin.com/	Consumer electronics company with regional storefronts.
+bell.ca	commercial_corporate	Bell Canada	https://www.bell.ca/mobility	Telecommunications company; Bell Mobility is one of its services.
+berlin.de	government_education	State of Berlin	https://www.berlin.de/	Government portal; a housing-service subpage cannot classify the entire portal as a company.
+bethesda.net	commercial_corporate	Bethesda Softworks	https://bethesda.net/	Commercial games publisher and service; the Japanese page is regional.
+bfmtv.com	commercial_corporate	BFM TV	https://www.bfmtv.com/	Corporate news broadcaster rather than an independent publication.
+bgi.com	commercial_corporate	BGI	https://www.bgi.com/	Genomics business website shared with regional entities.
+binance.com	commercial_corporate	Binance	http://binance.com	Commercial cryptocurrency exchange.
+bionorpharma.com	commercial_corporate	Bionor Pharma	https://www.bionorpharma.com/	Pharmaceutical business website; overlapping company records remain corporate evidence.
+blackrock.com	commercial_corporate	BlackRock	https://www.blackrock.com/	Investment-management company website; a fund subpage does not own the whole host.
+blender.org	public_interest_organization	Blender Foundation	https://www.blender.org	Blender is a foundation-led open-source project; the institute path is not the whole site.
+blizzard.com	commercial_corporate	Blizzard Entertainment	https://www.blizzard.com/en-us/	Corporate game developer and publisher.
+bms.com	commercial_corporate	Bristol Myers Squibb	https://www.bms.com/	Pharmaceutical corporation; Japan and research facility pages are parts of the business.
+bnf.fr	government_education	Bibliothèque nationale de France	https://www.bnf.fr/	France's national public library; the partnerships page is subordinate to the institution.
+bochk.com	commercial_corporate	Bank of China Hong Kong	https://www.bochk.com/	Banking-group website; holding and operating-bank records both concern banking.
+boeing.com	commercial_corporate	Boeing	https://www.boeing.com/defense/rotorcraft	Aerospace corporation; rotorcraft is one of its business areas.
+borregaard.com	commercial_corporate	Borregaard	https://www.borregaard.com/	Industrial company website; the regional entity is not a different publisher category.
+bp.com	commercial_corporate	BP	https://www.bp.com/	Energy corporation; regional companies share its global domain.
+broadcom.com	commercial_corporate	Broadcom	https://www.broadcom.com/	Corporate semiconductor and software company.
+bsh-group.com	commercial_corporate	BSH Hausgerate	https://www.bsh-group.com/es/es	BSH is a commercial home-appliance manufacturer.
+bt.com	commercial_corporate	BT	https://www.bt.com/	Telecommunications business website shared by the group and its divisions.
+bupa.com.sa	commercial_corporate	Bupa Arabia	https://www.bupa.com.sa/	Health-insurance business; bank/insurance commercial grouping is retained.
+canalplus.com	commercial_corporate	Canal+	https://www.canalplus.com	Commercial television and streaming company; Studio Bagel is a site subsection.
+capgemini.com	commercial_corporate	Capgemini	https://www.capgemini.com/	Consulting and technology services company; regional and consulting pages are parts of the group.
+carrefour.fr	commercial_corporate	Carrefour France	https://www.carrefour.fr/	Retail company's French site; its store formats are parts of the same business.
+castorama.fr	commercial_corporate	Castorama	https://www.castorama.fr/store/1427	Castorama is a commercial home-improvement retailer.
+cbi.ir	government_education	Central Bank of Iran	https://www.cbi.ir/page/15728.aspx	Shetab information is hosted by Iran's central bank, a public monetary authority.
+cctv.com	commercial_corporate	CCTV International Network Company	https://social.cctv.cn/help/termsOfService	The site's terms identify a network company as the service provider; state affiliation is not a government-portal verdict.
+celec.gob.ec	commercial_corporate	CELEC	https://www.celec.gob.ec/	State-owned electric-power corporation; government ownership does not make the operating business a public-authority portal.
+cepa.gob.sv	government_education	Comision Ejecutiva Portuaria Autonoma	https://www.cepa.gob.sv/historia/	The statutory public port authority owns the portal; the railway is only part of its responsibilities.
+cepheid.com	commercial_corporate	Cepheid	https://www.cepheid.com/	Medical-diagnostics company website.
+cgi.com	commercial_corporate	CGI	https://www.cgi.com/en	CGI is a commercial IT and consulting company.
+chapters.indigo.ca	commercial_corporate	Indigo and Chapters	https://chapters.indigo.ca/	Bookselling business website; retail-brand records are not independent publishers.
+chunichi.co.jp	commercial_corporate	Chunichi Shimbun Company	https://www.chunichi.co.jp/info/	Newspaper company's corporate domain, rather than an independent publication.
+cisco.com	commercial_corporate	Cisco	https://www.cisco.com/	Corporate network-equipment website; regional entities use the group host.
+citigroup.com	commercial_corporate	Citigroup	https://www.citigroup.com	Banking corporation; country-presence pages are regional operations.
+city.akita.lg.jp	government_education	City of Akita	https://www.city.akita.lg.jp/	Municipal website; waterworks are a department, not the owner of the whole city portal.
+city.hakodate.hokkaido.jp	government_education	City of Hakodate	https://www.city.hakodate.hokkaido.jp/	Municipal website; the water and sewer department occupies part of it.
+city.hamamatsu.shizuoka.jp	government_education	City of Hamamatsu	https://www.city.hamamatsu.shizuoka.jp/	Municipal portal, not a standalone water-company website.
+city.hiroshima.lg.jp	government_education	City of Hiroshima	https://www.city.hiroshima.lg.jp/	Municipal portal; waterworks information is a section of the city site.
+city.kagoshima.lg.jp	government_education	City of Kagoshima	https://www.city.kagoshima.lg.jp/	City portal; the ferry and art museum have hosted pages rather than ownership of the whole site.
+city.kawasaki.jp	government_education	City of Kawasaki	https://www.city.kawasaki.jp/	City portal; waterworks and transport bureaus are hosted departments.
+city.kitakyushu.lg.jp	government_education	City of Kitakyushu	https://www.city.kitakyushu.lg.jp/	Municipal portal; the water bureau does not own the entire website.
+city.kobe.lg.jp	government_education	City of Kobe	https://www.city.kobe.lg.jp/	Municipal portal; a bureau's subpage is not whole-host corporate ownership.
+city.kyoto.lg.jp	government_education	City of Kyoto	https://www.city.kyoto.lg.jp/	Municipal website, including water and sewer services.
+city.miyako.iwate.jp	government_education	City of Miyako	https://www.city.miyako.iwate.jp/	Municipal portal rather than a department's corporate website.
+city.moriya.ibaraki.jp	government_education	City of Moriya	https://www.city.moriya.ibaraki.jp/	Municipal portal; water and sewage are municipal responsibilities.
+city.naruto.tokushima.jp	government_education	City of Naruto	https://www.city.naruto.tokushima.jp/	Municipal portal; the city bus service is one hosted service.
+city.niigata.lg.jp	government_education	City of Niigata	https://www.city.niigata.lg.jp/	Municipal website rather than the water bureau's independent corporate host.
+city.osaka.lg.jp	government_education	City of Osaka	https://www.city.osaka.lg.jp/	Municipal government portal; waterworks form part of that portal.
+city.saitama.jp	government_education	City of Saitama	https://www.city.saitama.jp/	Municipal portal; water-service and museum pages do not classify the entire site as a corporation.
+city.sapporo.jp	government_education	City of Sapporo	https://www.city.sapporo.jp/	Municipal website; waterworks are a hosted city bureau.
+city.sasebo.lg.jp	government_education	City of Sasebo	https://www.city.sasebo.lg.jp/	Municipal website, including public water and sewer services.
+city.yokohama.lg.jp	government_education	City of Yokohama	https://www.city.yokohama.lg.jp/	Municipal portal; the water bureau is not an independent owner of the host.
+cityservices.act.gov.au	government_education	ACT city services	https://www.cityservices.act.gov.au/	Government services portal; a nursery's page does not establish corporate ownership of the host.
+cjenm.com	commercial_corporate	CJ ENM	https://www.cjenm.com/	Media and entertainment company website shared with its divisions.
+clarivate.com	commercial_corporate	Clarivate	https://clarivate.com/	Commercial analytics and information company; its research institute is part of the company.
+cma-cgm.com	commercial_corporate	CMA CGM	https://www.cma-cgm.com/products-services/air-cargo	Air cargo is a service of the commercial shipping and logistics group.
+coast.noaa.gov	government_education	NOAA Office for Coastal Management	https://coast.noaa.gov/nerrs/	This is a US government NOAA host, including its estuarine reserve information.
+coca-cola.com	commercial_corporate	Coca-Cola	https://www.coca-cola.com/	Corporate beverage brand; foundation pages do not classify the domain.
+cornelsen.de	commercial_corporate	Cornelsen Verlag	https://www.cornelsen.de/	Commercial educational publisher; Volk und Wissen is a publisher imprint within the site.
+corp.skylark.co.jp	commercial_corporate	Skylark Holdings	https://corp.skylark.co.jp/brand/groupbrand/	This is the corporate host for the restaurant group and its brands.
+corporate.hasbro.com	commercial_corporate	Hasbro	https://corporate.hasbro.com/	Corporate information site; incomplete duplicate organisation records do not erase the business identity.
+corporate.japanet.co.jp	commercial_corporate	Japanet Holdings	https://corporate.japanet.co.jp/company/outline/rc-nagasaki/	The subsidiary's page is on Japanet's corporate group host.
+corporate.jp.sharp	commercial_corporate	Sharp Corporation	https://corporate.jp.sharp/corporate/eco/sgf/site_report/yonago/	The site report is on Sharp's corporate host.
+crbeer.com.hk	commercial_corporate	China Resources Beer	https://www.crbeer.com.hk/	Brewing-company website.
+create-sd.co.jp	commercial_corporate	Create SD	https://www.create-sd.co.jp/	Drugstore business website; holding and operating records concern the same retail business.
+credit-suisse.com	commercial_corporate	Credit Suisse	https://www.credit-suisse.com/ru/ru/	The domain is the bank's site; an unrelated claimant does not define its ownership.
+crrcgc.cc	commercial_corporate	CRRC	https://www.crrcgc.cc/	Rail-equipment business group; subsidiary records share the corporate host.
+crunchbase.com	commercial_corporate	Crunchbase	https://www.crunchbase.com/	Corporate business information platform, not the companies listed on it.
+crunchyroll.com	commercial_corporate	Crunchyroll	https://www.crunchyroll.com/about/	Corporate anime streaming and entertainment service.
+deloitte.com	commercial_corporate	Deloitte	https://www.deloitte.com	Commercial professional services network.
+deutschebahn.com	commercial_corporate	Deutsche Bahn	https://www.deutschebahn.com/	Railway business group; state ownership does not make this a ministry portal.
+deutschepost.de	commercial_corporate	Deutsche Post	https://www.deutschepost.de/de.html	The present postal brand is operated by a company, notwithstanding the historical state post.
+dezuidrand.be	government_education	Streekvereniging Zuidrand	https://www.dezuidrand.be/overons/organisatie	The organisation describes a cooperation of six municipal governments, not an ordinary commercial corporation.
+dhl.com	commercial_corporate	DHL	https://www.dhl.com	Corporate logistics and shipping business.
+dhl.de	commercial_corporate	DHL Germany	https://www.dhl.de/	Corporate German logistics and shipping service.
+digi.com	commercial_corporate	Digi International	https://www.digi.com/	Corporate technology website; XBee is a product family rather than the site owner.
+dnb.com	commercial_corporate	Dun & Bradstreet	https://www.dnb.com/	Business data and analytics company; the German page is a regional office.
+domain.com.au	commercial_corporate	Domain Group	http://www.domain.com.au/group/	Commercial Australian property listings and media business.
+dow.com	commercial_corporate	Dow	http://www.dow.com/iberica/es/	Dow's group site belongs to the chemicals business.
+dpd.com	commercial_corporate	DPD	https://www.dpd.com/	Commercial parcel delivery network; national sites are regional operations.
+drammen.kommune.no	government_education	Drammen municipality	https://www.drammen.kommune.no/	Municipal portal; the public swimming facility is one hosted service.
+dresden.de	government_education	City of Dresden	https://www.dresden.de/	Municipal portal; childcare services are a department of the city site.
+duckduckgo.com	commercial_corporate	DuckDuckGo	https://duckduckgo.com/about	Commercial search and privacy software company.
+e-i.com	commercial_corporate	Euro Information	https://www.e-i.com/	Commercial information technology business; telecommunications is one associated operation.
+ea.com	commercial_corporate	Electronic Arts	https://www.ea.com	Corporate video game publisher and studios.
+eaton.com	commercial_corporate	Eaton	https://www.eaton.com/	Corporate industrial-products website shared with regional and component businesses.
+edf.fr	commercial_corporate	EDF	https://www.edf.fr/groupe-edf/producteur-industriel/energies-renouvelables/hydraulique/espace-edf-bazacle/presentation	The visitor space is on energy company EDF's corporate host.
+edy.rakuten.co.jp	commercial_corporate	Rakuten Edy	https://edy.rakuten.co.jp/company/	Rakuten Edy is a commercial payments service.
+ehcaan.com	commercial_corporate	Egyptian Holding Company for Airports and Air Navigation	https://www.ehcaan.com/	Holding-company website; public ownership does not remove its business-company classification.
+eiga.com	commercial_corporate	eiga.com	https://eiga.com/info/company/	Film information site operated by a company; corporate ownership takes precedence.
+element.io	commercial_corporate	Element	https://element.io/about	Commercial messaging software company; open-source technology does not make the company a charity.
+emc.com	commercial_corporate	Dell EMC	https://www.emc.com/	Corporate technology website and acquired product businesses.
+emerson.com	commercial_corporate	Emerson	https://www.emerson.com/aventics	The Aventics page is on industrial technology company Emerson's host.
+enel.com.br	commercial_corporate	Enel Brasil	https://www.enel.com.br/	Electricity business website.
+eni.com	commercial_corporate	Eni	https://www.eni.com/it-IT/chi-siamo/societa-controllate-partecipate/eni-global-energy-market.html	Eni is an energy company; state participation does not make its corporate site a government portal.
+enmtp.com	commercial_corporate	ENMTP	https://www.enmtp.com/	Industrial machinery business website; an operating unit does not change the site category.
+environment.gov.au	government_education	Australian environment department	https://www.environment.gov.au/	Government department website; national-parks functions are part of public administration.
+epicgames.com	commercial_corporate	Epic Games	https://www.epicgames.com/site/en-US/home	Corporate game developer and marketplace.
+erfgoedceldenderland.be	government_education	Erfgoed Denderland	https://erfgoedceldenderland.be/sites/default/files/attachments/2024-12/2_Subsidiereglement_Projectsubsidies_2024_2026.pdf	Intermunicipal heritage project association serving named municipalities, not a commercial publisher.
+erfgoedvlaamseardennen.be	government_education	Projectvereniging VARIANT	https://cultuurregio-variant.be/wp-content/uploads/2024/02/Beleidsplan_ErfgoedcelVlaamsArdennen2021-2026.pdf	Its policy plan identifies a partnership of thirteen municipalities with municipal representatives.
+ericsson.com	commercial_corporate	Ericsson	https://www.ericsson.com/	Corporate telecommunications website; subsidiary pages do not change ownership category.
+etrag.dz	commercial_corporate	Etrag	https://www.etrag.dz/	Tractor-manufacturing business website.
+etsy.com	commercial_corporate	Etsy	https://www.etsy.com/	Corporate online marketplace, not its individual sellers.
+euronext.com	commercial_corporate	Euronext	https://www.euronext.com/en/post-trade/euronext-clearing	Euronext operates exchanges and financial infrastructure commercially.
+eurowings.com	commercial_corporate	Eurowings	https://www.eurowings.com/at.html	Eurowings is a commercial airline.
+evergrande.com	commercial_corporate	Evergrande	https://www.evergrande.com/	Corporate group website; a vehicle brand record is not a different publisher category.
+ey.com	commercial_corporate	EY	https://www.ey.com	Commercial accounting and professional services network.
+fab.mil.br	government_education	Brazilian Air Force	https://www.fab.mil.br/	Military institution's official site; its cultural institution is not the publisher of the entire host.
+family.co.jp	commercial_corporate	FamilyMart	https://www.family.co.jp/	Convenience-store business website.
+fandom.com	commercial_corporate	Fandom	https://fandom.com/about	Corporate hosting platform despite community-created wikis.
+fastjet.com	commercial_corporate	Fastjet	https://www.fastjet.com/	Commercial airline website, regardless of which group entity supplies the declaration.
+fcbayern.com	commercial_corporate	FC Bayern Munich	https://www.fcbayern.com/de	The club's site represents its corporate professional football operation.
+fcx.com	commercial_corporate	Freeport-McMoRan	https://www.fcx.com/	Mining-company website; acquired and subsidiary company records are related business evidence.
+fesco.ru	commercial_corporate	FESCO	https://www.fesco.ru/	Shipping and logistics business website.
+finolex.com	commercial_corporate	Finolex	https://www.finolex.com/	Industrial business-group website.
+fintraffic.fi	commercial_corporate	Fintraffic	https://www.fintraffic.fi/	Traffic-management company group, rather than a government information portal.
+fonterra.com	commercial_corporate	Fonterra	https://www.fonterra.com/	Dairy business group; regional entities share the group's website.
+ford.com.cn	commercial_corporate	Ford China	https://www.ford.com.cn/	Commercial vehicle-company website; a joint-venture record does not change the category.
+fujifilm.com	commercial_corporate	Fujifilm	https://www.fujifilm.com/	Commercial imaging and healthcare group; subsidiary pages share the group domain.
+garmin.com	commercial_corporate	Garmin	https://www.garmin.com	Corporate navigation and consumer electronics business.
+gdc.com.tw	commercial_corporate	Goldsun	https://www.gdc.com.tw/	Building-materials business website.
+gfk.com	commercial_corporate	GfK	http://www.gfk.com/cz/	GfK is a commercial market research and data business.
+glenmarkpharma.com	commercial_corporate	Glenmark Pharmaceuticals	https://www.glenmarkpharma.com/	Pharmaceutical business group website.
+gmanetwork.com	commercial_corporate	GMA Network	https://www.gmanetwork.com/corporate/	Commercial media and broadcasting company; entertainment and news share the corporate domain.
+godaddy.com	commercial_corporate	GoDaddy	https://www.godaddy.com/	Corporate domain registration and hosting business.
+gohastings.com	commercial_corporate	Hastings Entertainment	https://www.gohastings.com/	Retail business declaration; a subsidiary does not establish a noncommercial publisher.
+group.mercedes-benz.com	commercial_corporate	Mercedes-Benz Group	https://group.mercedes-benz.com/karriere/ueber-uns/standorte/standort-detailseite-18160.html	This is the automotive company's group host.
+gwrr.com	commercial_corporate	Genesee and Wyoming	https://www.gwrr.com/	Railway business group; individual railway records use the corporate website.
+halliburton.com	commercial_corporate	Halliburton	https://www.halliburton.com/	Corporate energy-services website.
+hamburg.de	government_education	City of Hamburg	https://www.hamburg.de/	Hamburg's city portal; the hygiene institute is one public body within it.
+hanglung.com	commercial_corporate	Hang Lung	https://www.hanglung.com/	Property business group website.
+hanil.com	commercial_corporate	Hanil	https://www.hanil.com/	Cement and industrial business website.
+hankyu-hanshin.co.jp	commercial_corporate	Hankyu Hanshin	https://www.hankyu-hanshin.co.jp/	Transport and property business-group website.
+helse-bergen.no	government_education	Helse Bergen	https://kvalitet.helse-bergen.no/docs/pub/dok66940.htm	Public hospital trust wholly owned by the regional health authority, serving national healthcare duties.
+hilton.com	commercial_corporate	Hilton	https://www.hilton.com/	Corporate hotel and hospitality business.
+hls.harvard.edu	government_education	Harvard Law School	https://hls.harvard.edu/hls_research_program/program-on-international-financial-systems	The host is a university law school, regardless of the individual research program's associations.
+homepage2.nifty.com	unclassified	Nifty personal homepages	http://homepage2.nifty.com/narataku/	A shared personal-homepage host contains separate tenant sites; one page cannot establish a category for all of them.
+hp.com	commercial_corporate	HP Inc.	https://www.hp.com/	Corporate computer and printer business.
+hpe.com	commercial_corporate	Hewlett Packard Enterprise	https://www.hpe.com/	Corporate enterprise technology company.
+huawei.com	commercial_corporate	Huawei	https://www.huawei.com/	Corporate telecommunications and electronics company.
+hutch-med.com	commercial_corporate	HUTCHMED	https://www.hutch-med.com/	Biopharmaceutical company website.
+hyatt.com	commercial_corporate	Hyatt	https://www.hyatt.com/	Corporate hotel and hospitality business.
+hyundai.com	commercial_corporate	Hyundai Motor Company	https://www.hyundai.com/	Automaker's global domain; dealer and regional pages do not define the whole domain.
+ibm.com	commercial_corporate	IBM	https://www.ibm.com/	Corporate technology company.
+igg.com	commercial_corporate	IGG	https://www.igg.com/	Games-company website.
+ikea.com	commercial_corporate	IKEA	https://www.ikea.com	Corporate home furnishings retailer.
+indiatodaygroup.com	commercial_corporate	India Today Group	https://www.indiatodaygroup.com/	Corporate media-group website; a television subsidiary is not a separate noncommercial publisher.
+intimissimi.com	commercial_corporate	Intimissimi	https://www.intimissimi.com/it/uomo/	Intimissimi is a commercial clothing retail brand.
+invesco.com	commercial_corporate	Invesco	https://www.invesco.com/	Investment-management company website, including fund pages.
+irkut.com	commercial_corporate	Yakovlev and Irkut	https://www.irkut.com/	Aircraft-manufacturing business website.
+it.wikipedia.org	public_interest_organization	Italian Wikipedia	https://it.wikipedia.org/wiki/utente:Elwood	This is the nonprofit Wikimedia encyclopedia, not the company mentioned in a user page.
+ja.wikipedia.org	public_interest_organization	Japanese Wikipedia	https://ja.wikipedia.org/wiki/%E4%B8%89%E5%92%8C%E9%8A%80%E8%A1%8C	A bank article does not make the nonprofit Wikimedia encyclopedia a bank site.
+jal.co.jp	commercial_corporate	Japan Airlines	https://www.jal.co.jp/	Airline's own website; the Izumo city record is not evidence that the airline host is a municipal site.
+jetstar.com	commercial_corporate	Jetstar	http://www.jetstar.com/jp/ja/home	Jetstar is a commercial airline group.
+jpmorgan.com	commercial_corporate	J.P. Morgan	https://www.jpmorgan.com	Banking and financial services business, including its securities entities.
+jpx.co.jp	commercial_corporate	Japan Exchange Group	https://www.jpx.co.jp/	Financial-market business group; exchange records do not change the corporate category.
+jti.com	commercial_corporate	Japan Tobacco International	https://www.jti.com/	Tobacco-company website shared with regional businesses.
+kamada.com	commercial_corporate	Kamada	https://www.kamada.com/	Biopharmaceutical business website.
+kesko.fi	commercial_corporate	Kesko	https://www.kesko.fi/	Trading and retail company-group website.
+kikkoman.co.jp	commercial_corporate	Kikkoman	https://www.kikkoman.co.jp/	Food-company website; related operating-company records remain corporate evidence.
+kismetcg.com	commercial_corporate	Kismet Capital Group	https://www.kismetcg.com/	Investment business website; an investment vehicle is not an independent site publisher.
+kodak.com	commercial_corporate	Kodak	https://www.kodak.com/	Imaging corporation; Japan is a regional company page.
+kolmar.co.kr	commercial_corporate	Kolmar Korea	https://www.kolmar.co.kr/	Cosmetics and manufacturing company website.
+konami.com	commercial_corporate	Konami	https://www.konami.com/en/	Commercial entertainment and games group; multiple divisions share the domain.
+kt.com	commercial_corporate	KT	https://www.kt.com/	Telecommunications business website.
+kyndryl.com	commercial_corporate	Kyndryl	https://www.kyndryl.com/	IT-services company website; a generic duplicate organisation record does not erase this business identity.
+l.de	commercial_corporate	Leipziger Gruppe	https://www.l.de/	Utilities and transport business group; subsidiaries share the group website.
+laox.co.jp	commercial_corporate	Laox	https://www.laox.co.jp/	Retail business-group website.
+latam.com	commercial_corporate	LATAM Airlines	https://www.latam.com/	Commercial airline group website.
+lenovo.com	commercial_corporate	Lenovo	https://www.lenovo.com/	Corporate computer and technology company.
+lg.com	commercial_corporate	LG	https://www.lg.com/	Corporate consumer-electronics website.
+liebherr.com	commercial_corporate	Liebherr Group	https://www.liebherr.com/	Industrial manufacturing group; many subsidiary pages share its domain.
+macquarie.com	commercial_corporate	Macquarie	https://www.macquarie.com/	Financial-services business group; fund declarations do not own the whole host.
+magdeburg.de	government_education	City of Magdeburg	https://www.magdeburg.de/	Municipal portal; parks and cemetery services are hosted city functions.
+manutd.com	commercial_corporate	Manchester United	https://www.manutd.com/ar	The football club's main site is run as a commercial corporate operation, despite a nonprofit source claim.
+marriott.com	commercial_corporate	Marriott	https://www.marriott.com/	Hotel-company website; brands do not alter the corporate classification.
+mcdonalds.com	commercial_corporate	McDonald's	https://www.mcdonalds.com	Corporate restaurant business.
+mcgc.com	commercial_corporate	Mitsubishi Chemical Group	https://www.mcgc.com/	Corporate chemicals business website.
+mechel.ru	commercial_corporate	Mechel	https://www.mechel.ru/	Industrial business-group website.
+medbo.de	government_education	medbo	https://www.medbo.de/unternehmen	Public-law healthcare institution owned by Bezirk Oberpfalz, not an ordinary private business.
+media.stellantis.com	commercial_corporate	Stellantis Media	https://www.media.stellantis.com/ar-es/	This media host is a corporate communications site for the automotive group.
+mediaasia.com	commercial_corporate	Media Asia	https://www.mediaasia.com/	Media and entertainment business website.
+merckgroup.com	commercial_corporate	Merck Group	https://www.merckgroup.com/en/worldwide/merck-in-czech-republic.html	The group site represents the pharmaceutical and technology company.
+metro.ca	commercial_corporate	Metro	https://www.metro.ca/	Retail company website; the Dominion brand does not make it an independent publisher.
+mf.niedersachsen.de	government_education	Lower Saxony Ministry of Finance	https://www.mf.niedersachsen.de/startseite/themen/beteiligungen/hannoversche-beteiligungsgesellschaft-niedersachsen-mbh-hannover-1537.html	A state-owned company is described on the state finance ministry's government host.
+microsoft.com	commercial_corporate	Microsoft	https://www.microsoft.com/	Corporate technology company and its services.
+modine.com	commercial_corporate	Modine	https://www.modine.com/	Manufacturing company website shared with regional entities.
+moex.com	commercial_corporate	Moscow Exchange	https://www.moex.com/en/	The host belongs to the publicly traded exchange operator.
+mondelezinternational.com	commercial_corporate	Mondelez International	https://www.mondelezinternational.com/	Food business-group website.
+motorolasolutions.com	commercial_corporate	Motorola Solutions	http://www.motorolasolutions.com/XU-EN/Product+Lines/Psion	Psion content sits on the Motorola Solutions corporate site.
+ms-ins.com	commercial_corporate	Mitsui Sumitomo Insurance	https://www.ms-ins.com/	Insurance business website; financial businesses remain Corporations.
+mtc.gov.on.ca	government_education	Ontario tourism and culture ministry	https://www.mtc.gov.on.ca/	Provincial government ministry website; Games Ontario is one hosted programme.
+musica.unam.mx	government_education	UNAM Music	https://musica.unam.mx/ofunam	The orchestra is presented on the public university UNAM's music host.
+nature.com	commercial_corporate	Nature Portfolio	https://www.nature.com/nature-portfolio	Corporate scientific publishing portfolio, not an independent journal domain.
+nature.org	public_interest_organization	The Nature Conservancy	https://www.nature.org/	Conservation nonprofit; Europe is a regional program.
+neoenergia.com	commercial_corporate	Neoenergia	https://www.neoenergia.com/	Electric-power business-group website.
+newag.pl	commercial_corporate	Newag	https://www.newag.pl/	Rail-equipment manufacturing business website.
+news.yahoo.co.jp	commercial_corporate	Yahoo! Japan News	https://news.yahoo.co.jp/media/wordleaf	The publisher page is on the corporate Yahoo! Japan news service.
+nikkansports.com	commercial_corporate	Nikkan Sports	http://www.nikkansports.com/	Company-operated sports newspaper and media business.
+nikkei.co.jp	commercial_corporate	Nikkei Inc.	http://www.nikkei.co.jp/nikkeiinfo/	Nikkei is a corporate media company, not an independent nonprofit publication.
+nintendo.com	commercial_corporate	Nintendo	https://www.nintendo.com/	Games-company website; podcasts and lists of games are not competing site owners.
+nipponpapergroup.com	commercial_corporate	Nippon Paper Group	https://www.nipponpapergroup.com/	Paper-industry business-group website.
+nissanusa.com	commercial_corporate	Nissan USA	https://www.nissanusa.com/performance/	Nissan's US site represents its commercial automotive business.
+nissin.com	commercial_corporate	Nissin Foods	https://www.nissin.com/	Food-company website shared with related product businesses.
+nokia.com	commercial_corporate	Nokia	https://www.nokia.com/	Corporate telecommunications technology company.
+nongshim.com	commercial_corporate	Nongshim	https://www.nongshim.com/	Food business-group website.
+norwegian.com	commercial_corporate	Norwegian	https://www.norwegian.com/ar/	Norwegian is a commercial airline; its regional operations use this host.
+novatek.ru	commercial_corporate	Novatek	https://www.novatek.ru/	Energy business-group website.
+nrk.no	government_education	NRK	https://www.nrk.no/	Norway's institutional public-service broadcaster.
+nxp.com	commercial_corporate	NXP Semiconductors	https://www.nxp.com/	Semiconductor corporation; Czech operations are a regional part of the company.
+nyse.com	commercial_corporate	New York Stock Exchange	https://www.nyse.com/markets/nyse-american	NYSE is a commercial exchange operator, including its NYSE American market.
+oceanpowertechnologies.com	commercial_corporate	Ocean Power Technologies	https://www.oceanpowertechnologies.com/	Commercial technology-company website.
+oe24.at	commercial_corporate	oe24	https://www.oe24.at/	Austrian commercial media outlet; video is one section of the broader site.
+okx.com	commercial_corporate	OKX	https://www.okx.com	Commercial cryptocurrency exchange.
+olympics.com	public_interest_organization	International Olympic Committee	https://olympics.com	IOC's Olympic movement and public-facing service, rather than a corporate sponsor.
+openlibrary.org	public_interest_organization	Open Library	https://openlibrary.org	Internet Archive's nonprofit library project; the listed publisher is only a catalog entry.
+opko.com	commercial_corporate	OPKO Health	https://www.opko.com/	Healthcare business-company website, not a public hospital authority.
+oracle.com	commercial_corporate	Oracle	https://www.oracle.com/	Corporate software website; acquired companies use the group's host.
+ortn.ne	government_education	Office de Radiodiffusion Television du Niger	https://www.ortn.ne/	Public broadcasting office's institutional website rather than a subsidiary radio station's private company site.
+owenscorning.com	commercial_corporate	Owens Corning	https://www.owenscorning.com/	Manufacturing company website.
+panasonic.com	commercial_corporate	Panasonic	https://www.panasonic.com	Corporate electronics and technology business.
+pappers.fr	commercial_corporate	Pappers	https://www.pappers.fr/	Commercial company-information service; DROX AUTO is a listed company, not the site operator.
+parker.com	commercial_corporate	Parker Hannifin	http://www.parker.com/praedifa	Parker is a commercial engineering and manufacturing company.
+pax.ch	commercial_corporate	Pax	https://www.pax.ch/	Insurance business website; the practical financial-company grouping is retained.
+perplexity.ai	commercial_corporate	Perplexity AI	https://www.perplexity.ai/	Commercial AI search service.
+personal.com.ar	commercial_corporate	Personal	https://www.personal.com.ar/	Commercial Argentine telecommunications brand; Flow is a service on the site.
+pirelli.com	commercial_corporate	Pirelli	https://www.pirelli.com/tyres/it-it/auto/home	Pirelli is a commercial tyre manufacturer.
+pitchbook.com	commercial_corporate	PitchBook Data	https://www.pitchbook.com/	Business-information company's website; the Mitsubishi Chemical declaration does not identify this publisher.
+playstation.com	commercial_corporate	PlayStation	https://www.playstation.com/en-gb/corporate/about-us	Sony's corporate gaming business and services.
+pmi.com	commercial_corporate	Philip Morris International	https://www.pmi.com/	Tobacco-company website shared with regional entities.
+post.japanpost.jp	commercial_corporate	Japan Post	https://www.post.japanpost.jp/index_en.html	Japan Post's postal service is operated through a corporate group.
+posta.si	commercial_corporate	Posta Slovenije	https://www.posta.si/	Postal operating business website; a generic organisation record is not a reason to lose its company category.
+poznan.pl	government_education	City of Poznań	https://www.poznan.pl/	Municipal government portal; a particular city office page does not define the whole site.
+prasarbharati.gov.in	government_education	Prasar Bharati	https://prasarbharati.gov.in/wp-content/uploads/2024/04/RFP_merged.pdf	Its own publication identifies a statutory autonomous public-service broadcaster, not an ordinary commercial company.
+pref.kanagawa.jp	government_education	Kanagawa Prefecture	https://www.pref.kanagawa.jp/	Prefectural government portal; the public-enterprises agency is one part of it.
+pref.oita.jp	government_education	Oita Prefecture	https://www.pref.oita.jp/	Prefectural government portal rather than an individual enterprise's site.
+pref.tokushima.lg.jp	government_education	Tokushima Prefecture	https://www.pref.tokushima.lg.jp/	Prefectural government website, including its public-enterprises agency.
+prefeitura.poa.br	government_education	Porto Alegre municipality	https://www.prefeitura.poa.br/	Municipal portal; the transport authority's page does not own the whole host.
+ptc.com	commercial_corporate	PTC	https://www.ptc.com/	Commercial engineering software company; CoCreate is a product lineage within its site.
+pzhsteel.com.cn	commercial_corporate	Pangang	https://www.pzhsteel.com.cn/	Steel-industry business website.
+qt.io	commercial_corporate	Qt Group	https://www.qt.io	Commercial software company behind Qt; open-source toolkit availability does not change site ownership.
+qualcomm.com	commercial_corporate	Qualcomm	https://www.qualcomm.com/	Corporate technology website; regional entities and acquired businesses do not alter the category.
+radissonhotels.com	commercial_corporate	Radisson Hotels	https://www.radissonhotels.com	Hotel business; the Tallinn hotel is one property within the brand.
+rai.it	government_education	Rai	https://www.rai.it/	Italy's institutional public-service broadcaster; Rai Cinema is one of its activities.
+raiplay.it	government_education	RaiPlay	https://www.raiplay.it/	Streaming service of Italy's public-service broadcaster Rai.
+redbull.com	commercial_corporate	Red Bull	http://www.redbull.com	Corporate beverage and media business, including sponsored teams.
+redeglobo.globo.com	commercial_corporate	TV Globo	http://redeglobo.globo.com/redebahia	Local affiliates appear on the corporate Globo television network's host.
+redhat.com	commercial_corporate	Red Hat	https://www.redhat.com/	Corporate enterprise software company.
+renfe.com	commercial_corporate	Renfe	https://www.renfe.com/	Railway operating business; state ownership does not make the company website a ministry portal.
+research.microsoft.com	commercial_corporate	Microsoft Research	http://research.microsoft.com/en-us/um/people/gbell/Digital/timeline/tmlnhome.htm	A historical Digital Equipment page is hosted by Microsoft's corporate research division.
+resonac.com	commercial_corporate	Resonac	https://www.resonac.com/	Chemical-industry business-group website.
+riotgames.com	commercial_corporate	Riot Games	https://www.riotgames.com	Corporate game developer and publisher.
+riotinto.com	commercial_corporate	Rio Tinto	https://www.riotinto.com/	Mining business-group website.
+rkb.jp	commercial_corporate	RKB Mainichi	https://www.rkb.jp/	Corporate broadcasting website.
+rlh.be	public_interest_organization	Regionaal Landschap Haspengouw en Voeren	https://www.rlh.be/organisatie	The organisation identifies itself as a nonprofit conservation association, not a commercial company.
+rma.usda.gov	government_education	USDA Risk Management Agency	https://www.rma.usda.gov/	Government agency website; the insurance corporation is one associated body.
+routledge.com	commercial_corporate	Routledge	https://www.routledge.com/	Corporate academic publishing imprint.
+royalenfield.com	commercial_corporate	Royal Enfield	https://www.royalenfield.com/uk/en/	Royal Enfield is a commercial motorcycle brand.
+rrb.gov	government_education	Railroad Retirement Board	https://www.rrb.gov/	Government board website; an investment-trust declaration does not turn the board into a corporation.
+rtve.es	government_education	RTVE	https://www.rtve.es/	Spain's publicly owned national public-service broadcaster.
+s7.ru	commercial_corporate	S7 Airlines	https://www.s7.ru/ru/	Commercial airline's booking and service domain.
+saarland.de	government_education	State of Saarland	https://www.saarland.de/	State government portal; hosted service pages do not own the host.
+salesforce.com	commercial_corporate	Salesforce	https://www.salesforce.com/	Corporate software website, including acquired businesses.
+samsung.com	commercial_corporate	Samsung Electronics	https://www.samsung.com/	Corporate electronics business.
+sankei.com	commercial_corporate	Sankei Shimbun	https://www.sankei.com/	Newspaper operated by a commercial media company, not an independent publication domain.
+santander.com	commercial_corporate	Santander	https://www.santander.com/	Banking-group website.
+sap.com	commercial_corporate	SAP	https://www.sap.com/	Corporate software website.
+sartorius.com	commercial_corporate	Sartorius	https://www.sartorius.com/	Life-science and laboratory-equipment company website.
+sas.com	commercial_corporate	SAS Institute	https://www.sas.com	Commercial analytics software company; the Norway page is a regional branch.
+saver.one	commercial_corporate	SaverOne	https://www.saver.one/	Commercial road-safety technology-company website.
+sbb.ch	commercial_corporate	Swiss Federal Railways	https://www.sbb.ch/	State-owned railway company operating commercial transport services.
+sc.com	commercial_corporate	Standard Chartered	https://www.sc.com/za/	Standard Chartered is a banking group; its country sites share the corporate host.
+scania.com	commercial_corporate	Scania	https://www.scania.com/	Commercial vehicle manufacturer; dealers and regional operations share its domain.
+schroders.com	commercial_corporate	Schroders	https://www.schroders.com/	Investment-management company website rather than a fund's separate host.
+se.com	commercial_corporate	Schneider Electric	https://www.se.com	Corporate energy management and industrial technology company.
+seino.co.jp	commercial_corporate	Seino	https://www.seino.co.jp/	Transport and logistics business-group website.
+senaatti.fi	government_education	Senate Properties	https://www.senaatti.fi/en/about-us/organisation/	Unincorporated state property-administration enterprise operating under the Ministry of Finance, not a private property corporation.
+shikunbinui.com	commercial_corporate	Shikun and Binui	https://www.shikunbinui.com/	Construction and property business-company website.
+shionogi.com	commercial_corporate	Shionogi	https://www.shionogi.com/	Pharmaceutical business website.
+shunxinholdings.com	commercial_corporate	Shunxin Holdings	https://www.shunxinholdings.com/	Business holding-group website.
+siemens.com	commercial_corporate	Siemens	https://www.siemens.com/	Corporate industrial technology company.
+six-group.com	commercial_corporate	SIX Group	https://www.six-group.com/en/site/exchanges.html	SIX is a commercial financial infrastructure and exchange operator.
+sjmholdings.com	commercial_corporate	SJM Holdings	https://www.sjmholdings.com/	Casino and tourism business-group website.
+skf.com	commercial_corporate	SKF	http://www.skf.com/ua/uk/index.html	SKF is a commercial bearings and engineering manufacturer.
+smics.com	commercial_corporate	Semiconductor Manufacturing International Corporation	https://www.smics.com/	Semiconductor manufacturing business website.
+socar.az	commercial_corporate	SOCAR	https://www.socar.az/	Oil company's website; the university's homepage declaration does not make this an education host.
+softbank.jp	commercial_corporate	SoftBank	https://www.softbank.jp/	Telecommunications business website; a shop or subsidiary is not a different publisher category.
+sony.com	commercial_corporate	Sony	https://www.sony.com/	Corporate electronics and entertainment website; an acquired business's homepage link is not proof of a different publisher category.
+sony.jp	commercial_corporate	Sony	http://www.sony.jp/CorporateCruise/SMOJ-info/	Sony's Japanese site represents its commercial electronics business.
+soulapp.cn	commercial_corporate	Soul App	https://www.soulapp.cn/about.html	Soul is a commercial social-networking service; social exemptions remain separate.
+sparebank1.no	commercial_corporate	SpareBank 1	https://www.sparebank1.no/	Banking-group website; a foundation's declaration does not make the banking host a charity site.
+spglobal.com	commercial_corporate	S&P Global	https://www.spglobal.com/en	Corporate financial information and ratings company.
+springer.com	commercial_corporate	Springer	https://www.springer.com/	Corporate academic publishing business.
+springernature.com	commercial_corporate	Springer Nature	https://www.springernature.com	Commercial academic publishing group; corporate ownership takes precedence over publication.
+sps.honeywell.com	commercial_corporate	Honeywell	https://sps.honeywell.com/de/de/products/safety/fall-protection	The safety products host belongs to the commercial Honeywell group.
+square-enix-games.com	commercial_corporate	Square Enix	https://square-enix-games.com/en_GB/home2	The host promotes games from the commercial Square Enix publisher.
+stadt.winterthur.ch	government_education	City of Winterthur	https://stadt.winterthur.ch/	Municipal portal; parks services occupy part of that portal.
+sunac.com.cn	commercial_corporate	Sunac	https://www.sunac.com.cn/	Property business-group website.
+suntory.co.jp	commercial_corporate	Suntory	https://www.suntory.co.jp/	Commercial beverage and consumer goods group; flowers and drinks are business lines.
+svanen.se	public_interest_organization	Miljomarkning Sverige	https://www.svanen.se/globalassets/pdf/handbok---stadtjanster-version-1.1-juli-2020.pdf	Its own handbook states that the ecolabelling organisation operates without profit; company form alone is insufficient.
+svb.com	commercial_corporate	Silicon Valley Bank	https://www.svb.com/	Banking website; historical holding-company and operating-bank records remain financial-business evidence.
+swarco.com	commercial_corporate	Swarco	https://www.swarco.com/	Traffic-technology business-group website.
+swarovski.com	commercial_corporate	Swarovski	http://www.swarovski.com/	Commercial crystal and jewelry brand.
+swisscom.ch	commercial_corporate	Swisscom	https://www.swisscom.ch/	Telecommunications company; state ownership does not make its commercial service a government site.
+swp-potsdam.de	commercial_corporate	Stadtwerke Potsdam	https://www.swp-potsdam.de/	Utilities and transport operating-company website, distinct from the city's public-authority portal.
+swr.de	government_education	SWR	https://www.swr.de/	Independent public-service broadcaster established under public law.
+sydneyairport.com.au	commercial_corporate	Sydney Airport	https://www.sydneyairport.com.au/	Airport operating business website rather than a government ministry portal.
+symetra.com	commercial_corporate	Symetra	https://www.symetra.com/	Insurance business website.
+tadano.com	commercial_corporate	Tadano	https://www.tadano.com/	Industrial equipment business website.
+te.com	commercial_corporate	TE Connectivity	http://www.te.com/global-en/home.html	TE Connectivity is a commercial electronic components manufacturer.
+telecinco.es	commercial_corporate	Telecinco	https://www.telecinco.es/	Commercial television broadcaster; its cinema division is one part of the site.
+telegram.org	commercial_corporate	Telegram	https://telegram.org/blog	Commercial messaging service operated by Telegram FZ-LLC.
+telekom.com	commercial_corporate	Deutsche Telekom	https://www.telekom.com/	Corporate telecommunications website.
+teliacompany.com	commercial_corporate	Telia Company	https://www.teliacompany.com/	Corporate telecommunications website; regional entities share the group host.
+telus.com	commercial_corporate	TELUS	https://www.telus.com/	Corporate telecommunications website.
+tenaris.com	commercial_corporate	Tenaris	https://www.tenaris.com/	Industrial steel business-group website.
+tenfu.com	commercial_corporate	Tenfu	https://www.tenfu.com/	Tea business website; another tea-company declaration does not make it noncommercial.
+tesla.com	commercial_corporate	Tesla	https://www.tesla.com/	Corporate electric vehicle and energy business.
+tfl.gov.uk	government_education	Transport for London	https://tfl.gov.uk/	London's public transport authority.
+thalesgroup.com	commercial_corporate	Thales	https://www.thalesgroup.com	Aerospace, defense and technology corporation; country pages cover regional operations.
+theguardian.com	commercial_corporate	Guardian Media Group	https://www.theguardian.com/gmg	Corporate media ownership takes precedence over its trust association.
+thestar.com.my	commercial_corporate	Star Media Group	https://thestar.com.my/AboutUs	Newspaper site of a media company; corporate ownership takes precedence over publication.
+thk.com	commercial_corporate	THK	https://www.thk.com/	Industrial manufacturing business website.
+tienen.be	government_education	City of Tienen	https://www.tienen.be/	Municipal website; museum and local-enterprise records do not own the entire city host.
+toshiba.com	commercial_corporate	Toshiba	https://www.toshiba.com/	Corporate technology website.
+toshin.com	commercial_corporate	Toshin	http://www.toshin.com/nagase/	Toshin is a commercial preparatory education business, rather than a public university.
+transavia.com	commercial_corporate	Transavia	https://www.transavia.com/accueil/fr-fr	Commercial airline brand; Transavia France is one associated operation.
+treccani.it	commercial_corporate	Istituto della Enciclopedia Italiana	https://www.treccani.it/istituto/	Treccani's encyclopedia is published by an incorporated publishing company, not a government host.
+trekbikes.com	commercial_corporate	Trek Bicycle	https://www.trekbikes.com/	Commercial bicycle manufacturer and retailer.
+truecaller.com	commercial_corporate	Truecaller	https://www.truecaller.com/about	Corporate caller identification and communications service.
+tui.co.uk	commercial_corporate	TUI UK	https://www.tui.co.uk/cruise/	Travel company's UK site; Marella Cruises is a business within it.
+twitch.tv	commercial_corporate	Twitch	https://www.twitch.tv/	Corporate livestreaming service owned by Amazon.
+uaf.edu	government_education	University of Alaska Fairbanks	https://www.uaf.edu/ces/	The extension service is part of a public university, not a company host.
+ubi.com	commercial_corporate	Ubisoft	http://www.ubi.com/	Ubisoft's corporate gaming domain.
+ubisoft.com	commercial_corporate	Ubisoft	https://www.ubisoft.com/	Corporate game publisher and studios.
+ukroboronprom.com.ua	commercial_corporate	Ukrainian Defense Industry	https://www.ukroboronprom.com.ua/	Defence-industry business group; state ownership does not turn the operating company into a government portal.
+unep.org	government_education	United Nations Environment Programme	https://www.unep.org/	Intergovernmental United Nations environment programme.
+uni-regensburg.de	government_education	University of Regensburg	https://www.uni-regensburg.de/	Public university; IREBS is a university institute.
+universiteitleiden.nl	government_education	Leiden University	https://www.universiteitleiden.nl/	Public university; The Hague campus is part of the institution.
+usa.yamaha.com	commercial_corporate	Yamaha USA	https://usa.yamaha.com/products/proaudio/mixers/tf/features.html	The product page is on Yamaha's commercial US host.
+usbank.com	commercial_corporate	US Bank	https://www.usbank.com/	Banking business website.
+usda.gov	government_education	US Department of Agriculture	https://www.usda.gov/	Government department website; a financing corporation is a hosted function.
+usgs.gov	government_education	U.S. Geological Survey	https://www.usgs.gov/	United States government science agency.
+vaasa.fi	government_education	City of Vaasa	https://www.vaasa.fi/	Municipal portal; the city theatre is not the independent owner of this host.
+vale.com	commercial_corporate	Vale	https://www.vale.com/	Mining business-group website.
+valero.com	commercial_corporate	Valero	https://www.valero.com/	Energy business-group website.
+virgin.com	commercial_corporate	Virgin Group	http://www.virgin.com/money	The host represents the commercial Virgin group and its brands.
+virginaustralia.com	commercial_corporate	Virgin Australia	https://www.virginaustralia.com/	Commercial airline website shared by the group and regional airlines.
+visit.ashdod.muni.il	government_education	Ashdod municipal tourism	https://visit.ashdod.muni.il/	Municipal visitor-information portal, not a private travel-company publisher.
+vodafone.com	commercial_corporate	Vodafone	https://www.vodafone.com/business/why-vodafone/our-global-network/europe	Telecommunications corporation; the Europe network page is part of its global site.
+vodafone.com.tr	commercial_corporate	Vodafone Turkey	http://www.vodafone.com.tr/	Commercial telecommunications operator; Vodafone Net is one service.
+volvogroup.com	commercial_corporate	Volvo Group	https://www.volvogroup.com/	Corporate vehicle and industrial-equipment website.
+walmart.com	commercial_corporate	Walmart	https://www.walmart.com/	Corporate retailer; foundation pages do not classify the domain.
+warnerbros.com	commercial_corporate	Warner Bros.	https://www.warnerbros.com/	Corporate entertainment studio and its divisions.
+wartsila.com	commercial_corporate	Wartsila	http://www.wartsila.com/it_IT/Home	Wartsila is a commercial marine and energy technology company.
+waysport.ua	commercial_corporate	WaySport	https://www.waysport.ua/	Commercial sports-nutrition business website; a manufacturer's profile does not identify the website publisher.
+wellsfargo.com	commercial_corporate	Wells Fargo	https://www.wellsfargo.com/	Corporate banking and financial services business.
+westpharma.com	commercial_corporate	West Pharmaceutical Services	https://www.westpharma.com/	Pharmaceutical packaging and delivery-systems company website.
+whatsapp.com	commercial_corporate	WhatsApp	https://www.whatsapp.com/about/	Corporate messaging service owned by Meta.
+wikidata.org	public_interest_organization	Wikidata	https://wikidata.org/	Wikimedia's nonprofit collaborative knowledge base; incidental claims are unrelated.
+wilan.com	commercial_corporate	WiLAN	https://www.wilan.com/	Technology licensing business website.
+wolterskluwer.com	commercial_corporate	Wolters Kluwer	https://www.wolterskluwer.com/	Commercial publishing and information company; individual journals do not determine the corporate domain.
+wsp.com	commercial_corporate	WSP Global	https://www.wsp.com/fi-FI	WSP is a commercial engineering and professional services company.
+wwe.com	commercial_corporate	WWE	http://www.wwe.com/classics/wcw/	WWE is a commercial entertainment company; historical wrestling content does not change the host.
+www2.deloitte.com	commercial_corporate	Deloitte	https://www2.deloitte.com/cz/cs/services/legal.html	The host represents Deloitte's commercial professional services network.
+www2.gov.bc.ca	government_education	Government of British Columbia	https://www2.gov.bc.ca/	Provincial government portal; a printing office is one public function.
+wyndhamhotels.com	commercial_corporate	Wyndham Hotels & Resorts	https://www.wyndhamhotels.com	Hotel company; Vienna House is one of its brands.
+xiaohongshu.com	commercial_corporate	Xiaohongshu	https://xiaohongshu.com/en	Commercial social platform operated by a company.
+xinhuanet.com	commercial_corporate	Xinhuanet	https://www.xinhuanet.com/	Corporate digital-media publisher, distinct from treating all news as government administration.
+xsmd.com.cn	commercial_corporate	Xishan Coal Electricity Group	https://www.xsmd.com.cn/	Industrial energy business-group website.
+yelp.com	commercial_corporate	Yelp	https://www.yelp.com/	Corporate business review platform, not listed businesses.
+yomiuri.co.jp	commercial_corporate	Yomiuri Shimbun	https://www.yomiuri.co.jp/	Company-owned newspaper and media business.
+yukon.ca	government_education	Government of Yukon	https://yukon.ca/	Territorial government portal; the development corporation occupies part of it.
+zeiss.com	commercial_corporate	ZEISS	https://www.zeiss.com	Commercial optics and technology group; microscopy and SMT are business divisions.
+zf.com	commercial_corporate	ZF Friedrichshafen	https://www.zf.com/corporate/de_de/products/further_product_ranges/industrial_drive/industrial_drive_index.html	ZF is a commercial automotive and industrial technology company.

@@ -6122,3 +6122,4 @@ StaticNetFilteringEngine.prototype.dump = function() {
 const staticNetFilteringEngine = new StaticNetFilteringEngine();
 
 export default staticNetFilteringEngine;
+export const isLANAddress = address => FilterIPAddress.isLAN(address);

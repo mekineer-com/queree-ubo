@@ -56,6 +56,7 @@ vAPI.Net = class extends vAPI.Net {
         this.dnsWritePtr = 0;       // next write pointer in ring buffer
         this.dnsMaxCount = 512;     // max size of ring buffer
         this.dnsDict = new Map();   // hn to index in ring buffer
+        this.inspectionDNS = new Map();
         this.dnsCacheTTL = 600;     // TTL in seconds
         this.canUncloakCnames = true;
         this.cnameUncloakEnabled = true;
@@ -100,6 +101,7 @@ vAPI.Net = class extends vAPI.Net {
         }
         this.dnsList.fill(null);
         this.dnsDict.clear();
+        this.inspectionDNS.clear();
     }
 
     normalizeDetails(details) {
@@ -167,7 +169,7 @@ vAPI.Net = class extends vAPI.Net {
 
     onBeforeSuspendableRequest(details) {
         const hn = hostnameFromNetworkURL(details.url);
-        const dnsEntry = this.dnsFromCache(hn);
+        let dnsEntry = this.dnsFromCache(hn);
         if ( isResolvedObject(dnsEntry) && dnsEntry.ip ) {
             details.ip = dnsEntry.ip;
         }
@@ -181,22 +183,25 @@ vAPI.Net = class extends vAPI.Net {
                 return r;
             }
         }
+        if ( details.quereeContext !== undefined ) {
+            dnsEntry = this.dnsFromCache(hn, false, true);
+        }
         if ( isResolvedObject(dnsEntry) ) {
             return this.onAfterDNSResolution(hn, details, dnsEntry);
         }
         if ( skipDNS(details.proxyInfo) ) { return; }
-        if ( this.dnsShouldResolve(hn) === false ) { return; }
+        if ( this.dnsShouldResolve(hn, details) === false ) { return; }
         const promise = dnsEntry || this.dnsResolve(hn, details);
-        return promise.then(( ) => this.onAfterDNSResolution(hn, details));
+        return promise.then(entry => this.onAfterDNSResolution(hn, details, entry));
     }
 
     onAfterDNSResolution(hn, details, dnsEntry) {
         if ( dnsEntry === undefined ) {
-            dnsEntry = this.dnsFromCache(hn);
+            dnsEntry = this.dnsFromCache(hn, false, details.quereeContext !== undefined);
             if ( isResolvedObject(dnsEntry) === false ) { return; }
         }
         let proceed = false;
-        if ( dnsEntry.cname && this.cnameUncloakEnabled ) {
+        if ( this.cnameUncloakEnabled || details.quereeContext !== undefined ) {
             const newURL = this.uncloakURL(hn, dnsEntry, details);
             if ( newURL ) {
                 details.aliasURL = details.url;
@@ -216,16 +221,35 @@ vAPI.Net = class extends vAPI.Net {
     dnsToCache(hn, record, details) {
         const dnsEntry = { hn, until: Date.now() + this.dnsCacheTTL * 1000 };
         if ( record ) {
+            // Quer.ee's fixed profiles also need aliases suppressed by user settings.
+            if ( record.canonicalName !== hn ) { dnsEntry.canonicalName = record.canonicalName; }
             const cname = this.cnameFromRecord(hn, record, details);
             if ( cname ) { dnsEntry.cname = cname; }
             const ip = this.ipFromRecord(record);
             if ( ip ) { dnsEntry.ip = ip; }
         }
-        this.dnsSetCache(-1, hn, dnsEntry);
+        if ( details?.quereeContext !== undefined ) {
+            this.inspectionDNS.delete(hn);
+            if ( this.inspectionDNS.size >= 128 ) {
+                this.inspectionDNS.delete(this.inspectionDNS.keys().next().value);
+            }
+            this.inspectionDNS.set(hn, dnsEntry);
+        } else {
+            this.dnsSetCache(-1, hn, dnsEntry);
+        }
         return dnsEntry;
     }
 
-    dnsFromCache(hn, passive = false) {
+    dnsFromCache(hn, passive = false, inspection = false) {
+        if ( inspection ) {
+            const entry = this.inspectionDNS.get(hn);
+            if ( isPromise(entry) || entry?.until > Date.now() ) { return entry; }
+            this.inspectionDNS.delete(hn);
+            const ordinary = this.dnsFromCache(hn, passive);
+            // Ordinary failures must not suppress fresh inspection evidence.
+            if ( isPromise(ordinary) || ordinary?.ip || ordinary?.canonicalName ) { return ordinary; }
+            return;
+        }
         const i = this.dnsDict.get(hn);
         if ( i === undefined ) { return; }
         if ( isPromise(i) ) { return i; }
@@ -261,8 +285,8 @@ vAPI.Net = class extends vAPI.Net {
         }
     }
 
-    dnsShouldResolve(hn) {
-        if ( this.dnsResolveEnabled === false ) { return false; }
+    dnsShouldResolve(hn, details) {
+        if ( this.dnsResolveEnabled === false && details.quereeContext === undefined ) { return false; }
         if ( hn === '' ) { return false; }
         const c0 = hn.charCodeAt(0);
         if ( c0 === 0x5B /* [ */ ) { return false; }
@@ -271,11 +295,16 @@ vAPI.Net = class extends vAPI.Net {
     }
 
     dnsResolve(hn, details) {
+        const inspection = details.quereeContext !== undefined;
         const promise = dnsAPI.resolve(hn, [ 'canonical_name' ]).then(
             rec => this.dnsToCache(hn, rec, details),
-            ( ) => this.dnsToCache(hn)
+            ( ) => {
+                if ( inspection === false ) { return this.dnsToCache(hn); }
+                this.inspectionDNS.delete(hn);
+                return {};
+            }
         );
-        this.dnsDict.set(hn, promise);
+        (inspection ? this.inspectionDNS : this.dnsDict).set(hn, promise);
         return promise;
     }
 
@@ -297,12 +326,15 @@ vAPI.Net = class extends vAPI.Net {
     }
 
     uncloakURL(hn, dnsEntry, details) {
+        const inspection = details.quereeContext !== undefined;
+        const cname = inspection ? dnsEntry.canonicalName : dnsEntry.cname;
+        if ( cname === undefined ) { return; }
         const hnBeg = details.url.indexOf(hn);
         if ( hnBeg === -1 ) { return; }
         const oldURL = details.url;
-        const newURL = oldURL.slice(0, hnBeg) + dnsEntry.cname;
+        const newURL = oldURL.slice(0, hnBeg) + cname;
         const hnEnd = hnBeg + hn.length;
-        if ( this.cnameReplayFullURL ) {
+        if ( inspection || this.cnameReplayFullURL ) {
             return newURL + oldURL.slice(hnEnd);
         }
         const pathBeg = oldURL.indexOf('/', hnEnd);

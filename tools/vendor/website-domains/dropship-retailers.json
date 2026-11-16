@@ -1,0 +1,753 @@
+{
+  "meta": {
+    "title": "Dropship Filters",
+    "description": "Combined filter list. Removes sketchy Chinese retailers from search results, blocks their ads and trackers, and blocks affiliate redirect chains. Does NOT block direct navigation to any of these sites.",
+    "homepage": "https://gitlab.com/Lalaggi/dropship-filters",
+    "license": "CC-BY-SA-4.0",
+    "expires": "7 days"
+  },
+  "pihole_exclude": [
+    "alicdn.com",
+    "cf.cjdropshipping.com",
+    "dhgate.com",
+    "frontend-cf.cjdropshipping.com",
+    "kwcdn.com",
+    "ltwebstatic.com",
+    "pddpic.com",
+    "romwe.com",
+    "sheinsz.ltwebstatic.com",
+    "taobao.com",
+    "wish.com"
+  ],
+  "engines": {
+    "google": {
+      "domain": [
+        "google.ae",
+        "google.ar",
+        "google.at",
+        "google.be",
+        "google.ca",
+        "google.ch",
+        "google.cl",
+        "google.co.il",
+        "google.co.in",
+        "google.co.jp",
+        "google.co.kr",
+        "google.co.nz",
+        "google.co.th",
+        "google.co.uk",
+        "google.co.za",
+        "google.com",
+        "google.com.au",
+        "google.com.br",
+        "google.com.co",
+        "google.com.hk",
+        "google.com.mx",
+        "google.com.pe",
+        "google.com.ph",
+        "google.com.sg",
+        "google.com.tr",
+        "google.com.tw",
+        "google.com.vn",
+        "google.cz",
+        "google.de",
+        "google.dk",
+        "google.es",
+        "google.fi",
+        "google.fr",
+        "google.gr",
+        "google.hu",
+        "google.id",
+        "google.ie",
+        "google.it",
+        "google.my",
+        "google.nl",
+        "google.no",
+        "google.pl",
+        "google.pt",
+        "google.ro",
+        "google.ru",
+        "google.sa",
+        "google.se"
+      ],
+      "result": ".g",
+      "extra": [
+        "[data-hveid]",
+        ".pla-unit"
+      ]
+    },
+    "duckduckgo": {
+      "domain": "duckduckgo.com",
+      "result": ".result",
+      "extra": [
+        ".web-result"
+      ]
+    },
+    "bing": {
+      "domain": [
+        "bing.ca",
+        "bing.co.id",
+        "bing.co.in",
+        "bing.co.kr",
+        "bing.co.nz",
+        "bing.co.th",
+        "bing.co.uk",
+        "bing.com",
+        "bing.com.au",
+        "bing.com.br",
+        "bing.com.hk",
+        "bing.com.mx",
+        "bing.com.my",
+        "bing.com.ph",
+        "bing.com.sg",
+        "bing.com.tr",
+        "bing.com.tw",
+        "bing.com.vn",
+        "bing.de",
+        "bing.dk",
+        "bing.es",
+        "bing.fi",
+        "bing.fr",
+        "bing.it",
+        "bing.jp",
+        "bing.nl",
+        "bing.no",
+        "bing.pl",
+        "bing.pt",
+        "bing.ru",
+        "bing.se",
+        "bing.tw"
+      ],
+      "result": ".b_algo"
+    },
+    "qwant": {
+      "domain": "qwant.com",
+      "result": ".WebResult"
+    },
+    "ecosia": {
+      "domain": "ecosia.org",
+      "result": ".result"
+    },
+    "brave": {
+      "domain": "search.brave.com",
+      "result": ".snippet"
+    },
+    "startpage": {
+      "domain": "startpage.com",
+      "result": ".w-gl__result"
+    },
+    "kagi": {
+      "domain": "kagi.com",
+      "result": ".search-result"
+    },
+    "yahoo": {
+      "domain": "search.yahoo.com",
+      "result": ".dd"
+    },
+    "yandex": {
+      "domain": [
+        "yandex.by",
+        "yandex.com",
+        "yandex.kz",
+        "yandex.ru",
+        "yandex.ua"
+      ],
+      "result": ".serp-item",
+      "query_param": "text"
+    },
+    "google_shopping": {
+      "domain": "shopping.google.com",
+      "result": ".sh-dgr__content",
+      "extra": [
+        ".pla-unit",
+        ".sh-dlr__list-result",
+        ".sh-dgr__grid-result"
+      ]
+    },
+    "mojeek": {
+      "domain": "mojeek.com",
+      "result": ".result"
+    },
+    "duckduckgo_lite": {
+      "domain": [
+        "lite.duckduckgo.com",
+        "html.duckduckgo.com"
+      ],
+      "result": ".result"
+    }
+  },
+  "ads": [
+    {
+      "name": "ALIEXPRESS / ALIBABA ECOSYSTEM",
+      "rules": [
+        {
+          "h": "alimama.com"
+        },
+        {
+          "h": "alicdn.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "mmstat.com"
+        },
+        {
+          "h": "tanx.com"
+        },
+        {
+          "h": "taobao.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "aliunicorn.com"
+        },
+        {
+          "h": "aligames.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "efpirates.aliexpress.com"
+        },
+        {
+          "h": "terms.aliexpress.com",
+          "mod": "third-party"
+        }
+      ]
+    },
+    {
+      "name": "BANGGOOD",
+      "rules": [
+        {
+          "h": "track.banggood.com"
+        },
+        {
+          "h": "banggoodads.com"
+        },
+        {
+          "h": "ads.banggood.com"
+        }
+      ]
+    },
+    {
+      "name": "CJ DROPSHIPPING",
+      "rules": [
+        {
+          "h": "app.cjdropshipping.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "cf.cjdropshipping.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "frontend-cf.cjdropshipping.com",
+          "mod": "third-party"
+        }
+      ]
+    },
+    {
+      "name": "DHGATE",
+      "rules": [
+        {
+          "h": "track.dhgate.com"
+        },
+        {
+          "h": "dhgate.com",
+          "mod": "third-party,image"
+        }
+      ]
+    },
+    {
+      "name": "GLOBAL EGROW (Zaful, RoseGal, SammyDress, DressLily, etc.)",
+      "rules": [
+        {
+          "h": "globalegrow.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "egrow-ads.com"
+        }
+      ]
+    },
+    {
+      "name": "SHEIN / ROMWE",
+      "rules": [
+        {
+          "h": "shein-ads.com"
+        },
+        {
+          "h": "shein-analytics.com"
+        },
+        {
+          "h": "sheinsz.ltwebstatic.com"
+        },
+        {
+          "h": "ltwebstatic.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "sheingroup.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "romwe.com",
+          "mod": "third-party,image"
+        }
+      ]
+    },
+    {
+      "name": "TEMU / PDD HOLDINGS",
+      "rules": [
+        {
+          "h": "acdn.temu.com"
+        },
+        {
+          "h": "us-mpsnap.kwcdn.com"
+        },
+        {
+          "h": "akaroa-business.kwcdn.com"
+        },
+        {
+          "h": "business.kwcdn.com"
+        },
+        {
+          "h": "kwcdn.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "temu-click.com"
+        },
+        {
+          "h": "temupush.com"
+        },
+        {
+          "h": "temuads.com"
+        },
+        {
+          "h": "pddglobal.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "pddholdingsads.com"
+        }
+      ]
+    },
+    {
+      "name": "WISH",
+      "rules": [
+        {
+          "h": "wish.com",
+          "mod": "third-party,image"
+        },
+        {
+          "h": "contextlogic.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "cdn.wish.com",
+          "mod": "third-party"
+        }
+      ]
+    },
+    {
+      "name": "TIKTOK SHOP",
+      "parent": "ByteDance",
+      "source": "https://ads.tiktok.com/",
+      "confidence": "high",
+      "rules": [
+        {
+          "h": "ads.tiktok.com",
+          "mod": "third-party"
+        },
+        {
+          "h": "analytics.tiktok.com",
+          "mod": "third-party"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "name": "ALIBABA / TAOBAO REDIRECTS",
+      "rules": [
+        {
+          "h": "s.click.taobao.com"
+        },
+        {
+          "h": "click.taobao.com"
+        }
+      ]
+    },
+    {
+      "name": "ALIEXPRESS",
+      "rules": [
+        {
+          "h": "s.click.aliexpress.com"
+        },
+        {
+          "h": "click.aliexpress.com"
+        },
+        {
+          "h": "redirect.aliexpress.com"
+        }
+      ]
+    },
+    {
+      "name": "BANGGOOD",
+      "rules": [
+        {
+          "h": "go.banggood.com"
+        },
+        {
+          "h": "click.banggood.com"
+        }
+      ]
+    },
+    {
+      "name": "DHGATE",
+      "rules": [
+        {
+          "h": "go.dhgate.com"
+        }
+      ]
+    },
+    {
+      "name": "GLOBAL EGROW CONSTELLATION",
+      "rules": [
+        {
+          "h": "go.zaful.com"
+        },
+        {
+          "h": "go.rosegal.com"
+        },
+        {
+          "h": "go.dresslily.com"
+        },
+        {
+          "h": "go.noracora.com"
+        }
+      ]
+    },
+    {
+      "name": "LIGHTINTHEBOX",
+      "rules": [
+        {
+          "h": "go.lightinthebox.com"
+        },
+        {
+          "h": "click.lightinthebox.com"
+        }
+      ]
+    },
+    {
+      "name": "SHEIN",
+      "rules": [
+        {
+          "h": "tracking.shein.com"
+        },
+        {
+          "h": "click.shein.com"
+        },
+        {
+          "h": "go.shein.com"
+        }
+      ]
+    },
+    {
+      "name": "TEMU",
+      "rules": [
+        {
+          "h": "tracking.temu.com"
+        },
+        {
+          "h": "af.temu.com"
+        },
+        {
+          "h": "click.temu.com"
+        },
+        {
+          "h": "go.temu.com"
+        }
+      ]
+    },
+    {
+      "name": "WISH",
+      "rules": [
+        {
+          "h": "click.wish.com"
+        },
+        {
+          "h": "go.wish.com"
+        }
+      ]
+    }
+  ],
+  "search": [
+    {
+      "name": "ALIBABA INTL RETAIL - LAZADA",
+      "parent": "Alibaba",
+      "confidence": "high",
+      "category": "marketplace",
+      "domains": [
+        "lazada.co.id",
+        "lazada.co.th",
+        "lazada.com",
+        "lazada.com.my",
+        "lazada.com.ph",
+        "lazada.sg",
+        "lazada.vn"
+      ]
+    },
+    {
+      "name": "ALIBABA INTL RETAIL - TRENDYOL/DARAZ/MIRAVIA",
+      "parent": "Alibaba",
+      "confidence": "high",
+      "category": "marketplace",
+      "domains": [
+        "daraz.com",
+        "daraz.com.bd",
+        "daraz.com.np",
+        "daraz.lk",
+        "daraz.pk",
+        "miravia.com",
+        "miravia.es",
+        "trendyol.com"
+      ]
+    },
+    {
+      "name": "ALIBABA.COM + TAOBAO/TMALL",
+      "parent": "Alibaba",
+      "confidence": "high",
+      "source": "https://www.alibabagroup.com/en-US/our-company",
+      "category": "b2b",
+      "domains": [
+        "alibaba.com",
+        "taobao.com",
+        "tmall.com",
+        "tmall.hk",
+        "world.taobao.com",
+        "world.tmall.com"
+      ]
+    },
+    {
+      "name": "ALIEXPRESS",
+      "domains": [
+        "aliexpress.com",
+        "aliexpress.us"
+      ]
+    },
+    {
+      "name": "BRIDAL/FORMAL DROPSHIP SPAM",
+      "parent": "Yiwu formalwear network",
+      "confidence": "medium",
+      "category": "bridal",
+      "domains": [
+        "babyonlinedress.com",
+        "ever-pretty.co.uk",
+        "ever-pretty.com",
+        "everpretty.com",
+        "jjshouse.com",
+        "lalamira.com",
+        "vivianbridal.com"
+      ]
+    },
+    {
+      "name": "CHICV GROUP (Noracora, JustFashionNow, StyleWe)",
+      "domains": [
+        "justfashionnow.com",
+        "noracora.com",
+        "stylewe.com"
+      ]
+    },
+    {
+      "name": "CJ DROPSHIPPING / WHITE-LABEL",
+      "parent": "CJ Dropshipping",
+      "confidence": "high",
+      "category": "fulfillment",
+      "domains": [
+        "cjdropshipping.com",
+        "cjpacket.com"
+      ]
+    },
+    {
+      "name": "DHGATE / B2B WHOLESALE (DHgate, Made-in-China, GlobalSources, 1688, YiWuGo, TradeKey, ChinaBrands)",
+      "domains": [
+        "1688.com",
+        "chinabrands.com",
+        "dhgate.com",
+        "globalsources.com",
+        "made-in-china.com",
+        "tradekey.com",
+        "yiwugo.com"
+      ]
+    },
+    {
+      "name": "ELECTRONICS / GADGET JUNK (Banggood, GeekBuying, Tomtop, DealExtreme/DX, LightInTheBox, MiniInTheBox, GearBest, ChinaVasion)",
+      "domains": [
+        "banggood.com",
+        "chinavasion.com",
+        "dealextreme.com",
+        "dx.com",
+        "gearbest.com",
+        "geekbuying.com",
+        "lightinthebox.com",
+        "miniinthebox.com",
+        "tomtop.com"
+      ]
+    },
+    {
+      "name": "ELECTRONICS LONG TAIL",
+      "parent": "China gadget fulfillment",
+      "confidence": "medium",
+      "category": "electronics",
+      "domains": [
+        "cafago.com",
+        "chinabuye.com",
+        "everbuying.net",
+        "focalprice.com"
+      ]
+    },
+    {
+      "name": "FAST FASHION - CHICME/CHICNOVA & MORE",
+      "parent": "ChicV-adjacent",
+      "confidence": "high",
+      "category": "fast_fashion",
+      "domains": [
+        "chicme.com",
+        "chicnova.com",
+        "dresshead.com"
+      ]
+    },
+    {
+      "name": "FAST FASHION MISC (Rotita, ModLily, TbDress, FashionMia, RoseWe, TideBuy, Choies, JollyChic, Cider, Commense, Urbanic, PatPat, Cupshe, Halara, SHEGLAM)",
+      "domains": [
+        "choies.com",
+        "commense.com",
+        "cupshe.com",
+        "fashionmia.com",
+        "halara.com",
+        "jollychic.com",
+        "modlily.com",
+        "patpat.com",
+        "rosewe.com",
+        "rotita.com",
+        "sheglam.com",
+        "shopcider.com",
+        "tbdress.com",
+        "tidebuy.com",
+        "urbanicapp.com"
+      ]
+    },
+    {
+      "name": "GLOBAL EGROW CONSTELLATION",
+      "domains": [
+        "dresslily.com",
+        "nastydress.com",
+        "rosegal.com",
+        "rosewholesale.com",
+        "sammydress.com",
+        "trendsgal.com",
+        "twinkledeals.com",
+        "zaful.com"
+      ]
+    },
+    {
+      "name": "GLOBAL EGROW CONSTELLATION - LONG TAIL",
+      "parent": "Global Egrow",
+      "confidence": "high",
+      "category": "fast_fashion",
+      "domains": [
+        "amiclubwear.com",
+        "cndirect.com",
+        "ericdress.com",
+        "floryday.com",
+        "jollyhers.com",
+        "oasap.com"
+      ]
+    },
+    {
+      "name": "HOME/FURNITURE DROPSHIP",
+      "parent": "China furniture fulfillment",
+      "confidence": "medium",
+      "category": "home",
+      "domains": [
+        "belleze.com",
+        "costway.com",
+        "homary.co.uk",
+        "homary.com",
+        "tribesigns.com"
+      ]
+    },
+    {
+      "name": "JOOM",
+      "domains": [
+        "joom.com"
+      ]
+    },
+    {
+      "name": "PDD HOLDINGS - PINDUODUO",
+      "parent": "PDD Holdings",
+      "confidence": "high",
+      "category": "marketplace",
+      "domains": [
+        "pinduoduo.com",
+        "yangkeduo.com"
+      ]
+    },
+    {
+      "name": "SHEIN + ROMWE",
+      "domains": [
+        "romwe.com",
+        "shein.co.uk",
+        "shein.com",
+        "uk.shein.com"
+      ]
+    },
+    {
+      "name": "SHEIN GROUP - MISSGUIDED/MOTF/GLOWMODE",
+      "parent": "Shein / Zoetop",
+      "confidence": "high",
+      "category": "fast_fashion",
+      "domains": [
+        "glowmode.com",
+        "missguided.co.uk",
+        "missguided.com",
+        "missguidedus.com",
+        "motf.com"
+      ]
+    },
+    {
+      "name": "TEMU / PDD HOLDINGS",
+      "domains": [
+        "temu.co.uk",
+        "temu.com"
+      ]
+    },
+    {
+      "name": "TEMU-ADJACENT - VOGHION WAVE",
+      "parent": "Voghion",
+      "confidence": "medium",
+      "category": "marketplace",
+      "domains": [
+        "voghion.co.uk",
+        "voghion.com",
+        "voghion.de"
+      ]
+    },
+    {
+      "name": "TIKTOK SHOP",
+      "parent": "ByteDance",
+      "confidence": "high",
+      "category": "marketplace",
+      "domains": [
+        "shop.tiktok.com",
+        "tiktokshop.com"
+      ]
+    },
+    {
+      "name": "WISH",
+      "domains": [
+        "wish.com"
+      ]
+    }
+  ]
+}

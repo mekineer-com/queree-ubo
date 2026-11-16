@@ -1,0 +1,51 @@
+! Title: Dropship Filters – Redirects & Affiliates
+! Checksum: 97M9Vces8FPul2/A
+! Description: Blocks affiliate bounce links and redirect tracking domains
+!   for sketchy Chinese retailers. Prevents silent redirects from other
+!   sites into these retailers. Does NOT block direct navigation.
+! Version: 1.2.0
+! Last modified: 2026-08-19
+! Expires: 7 days
+! Homepage: https://gitlab.com/Lalaggi/dropship-filters
+! License: CC-BY-SA-4.0
+
+! ALIBABA / TAOBAO REDIRECTS
+||s.click.taobao.com^
+||click.taobao.com^
+
+! ALIEXPRESS
+||s.click.aliexpress.com^
+||click.aliexpress.com^
+||redirect.aliexpress.com^
+
+! BANGGOOD
+||go.banggood.com^
+||click.banggood.com^
+
+! DHGATE
+||go.dhgate.com^
+
+! GLOBAL EGROW CONSTELLATION
+||go.zaful.com^
+||go.rosegal.com^
+||go.dresslily.com^
+||go.noracora.com^
+
+! LIGHTINTHEBOX
+||go.lightinthebox.com^
+||click.lightinthebox.com^
+
+! SHEIN
+||tracking.shein.com^
+||click.shein.com^
+||go.shein.com^
+
+! TEMU
+||tracking.temu.com^
+||af.temu.com^
+||click.temu.com^
+||go.temu.com^
+
+! WISH
+||click.wish.com^
+||go.wish.com^

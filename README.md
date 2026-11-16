@@ -1,3 +1,22 @@
+# uBlock Origin + Quer.ee (uBO+Q)
+
+uBO+Q is a modified version of uBlock Origin, maintained by Team GhostMaker.
+It keeps uBlock Origin's content blocking and adds Quer.ee filtering to Google
+and Bing results. We are not affiliated with or endorsed by the uBlock Origin
+project.
+
+**Signed download pending.**
+
+For this modified version, use the [guide](https://quer.ee/extension/),
+[support](https://quer.ee/about/#contact), [privacy information](QUEREE_PRIVACY.md)
+and [build instructions](QUEREE_BUILDING.md). The code remains GPLv3; upstream
+copyright, contributor and license notices are preserved.
+
+## Upstream uBlock Origin Documentation
+
+The original documentation below describes uBlock Origin, not this modified
+release. Its downloads, releases and support links belong to the upstream project.
+
 [![Badge Commits]][Commit Rate]
 [![Badge Issues]][Issues]
 [![Badge Localization]][Crowdin]

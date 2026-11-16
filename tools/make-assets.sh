@@ -4,6 +4,9 @@
 
 set -e
 
+sh tools/check-queree-source.sh dist/build/uAssets/main UASSETS_MAIN_COMMIT
+sh tools/check-queree-source.sh dist/build/uAssets/prod UASSETS_PROD_COMMIT
+
 DES=$1/assets
 
 echo "*** Packaging assets in $DES... "

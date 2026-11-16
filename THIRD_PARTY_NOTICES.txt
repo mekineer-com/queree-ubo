@@ -1,0 +1,280 @@
+Quer.ee third-party data and code notices
+=========================================
+
+Quer.ee is a GPLv3 fork of uBlock Origin. See LICENSE.txt for the extension
+license and full warranty disclaimer. The following notices cover additional
+data and code incorporated into Quer.ee-specific filtering.
+
+Maigret profile-address data (offline source tools only)
+-------------------------------------------------------
+Source: https://github.com/soxoj/maigret/blob/main/maigret/resources/data.json
+Snapshot retrieved November 9, 2026; SHA-256:
+5980aab8043dac0d2cba37779c3164b4c951d589d7e4989a8697c29d584545bc
+Copyright (c) 2020-2026 Soxoj, MIT license.
+The unmodified data and full notice are in tools/vendor/maigret/.
+Quer.ee expands known account-address templates during organization imports to
+avoid promoting a hosted profile into a whole-host ownership claim. No Maigret
+account searches are performed, and its data is not bundled into the XPI.
+
+UT1 blacklists
+--------------
+Shopping, banking, and press domain data are adapted from blacklists managed by
+Universite Toulouse Capitole and Fabrice Prigent, mirrored by Olivier Berten at
+https://github.com/olbat/ut1-blacklists. The source lists are licensed under
+Creative Commons Attribution-ShareAlike 4.0 International:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Quer.ee selects categories, normalizes and removes domains, and compiles the
+remaining data into a hostname trie. The adapted UT1-derived portions remain
+available under CC BY-SA 4.0.
+
+Directory of Open Access Journals (DOAJ)
+---------------------------------------
+Scholarly journal website data come from the public DOAJ journal CSV:
+https://doaj.org/csv
+Journal metadata is released under CC0 1.0:
+https://doaj.org/terms/
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Quer.ee selects root journal homepage URLs, normalizes their hostnames, excludes
+shared services and social platforms, and compiles them into the existing
+publication trie. Journal records with paths, queries or fragments are omitted
+instead of assigning their entire host to a journal. The source is not used to
+infer corporate ownership or nonprofit status.
+
+Dropship Filters
+----------------
+Retailer domain data are adapted from Lalaggi's Dropship Filters project:
+https://gitlab.com/Lalaggi/dropship-filters. The source is licensed under
+Creative Commons Attribution-ShareAlike 4.0 International:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Quer.ee selects and normalizes domains and compiles them into a hostname trie.
+The adapted Dropship Filters-derived portion remains available under
+CC BY-SA 4.0.
+The complete Redirects & Affiliates file is also used for visible outgoing-link
+checks under Advertising signals, alongside Soteria. Its 23 anchored domain rules
+retain their hostname/subdomain scope; no entries are hand-pruned. The raw file
+and its CC BY-SA 4.0 declaration are included under
+assets/queree/website-lists/affiliate-links/dropship-redirects.txt, with pinned
+revision and byte hashes in the source archive's website-list provenance.
+
+Charity Commission for England and Wales
+----------------------------------------
+Registered-charity website data come from the Charity Commission public
+register. Quer.ee selects registered records whose website and contact-email
+domains agree, removes nonexclusive hosts, and compiles the remaining domains.
+Contains public sector information licensed under the Open Government Licence
+v3.0: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+Australian Charities and Not-for-profits Commission
+---------------------------------------------------
+Registered-charity website data come from the Australian Charities and
+Not-for-profits Commission (ACNC):
+https://data.gov.au/data/dataset/acnc-register
+
+Licensed under Creative Commons Attribution 3.0 Australia:
+https://creativecommons.org/licenses/by/3.0/au/
+
+Quer.ee normalizes the website fields, removes platforms and nonexclusive
+hosts, and compiles the remaining domains into a hostname trie.
+
+United States Internal Revenue Service
+--------------------------------------
+Small-charity website declarations come from the IRS Form 990-N bulk download:
+https://apps.irs.gov/pub/epostcard/data-download-epostcard.zip
+Current charity status comes from all four regional EO BMF extracts:
+https://www.irs.gov/charities-non-profits/exempt-organizations-business-master-file-extract-eo-bmf
+
+These are US federal government public data. Quer.ee selects recent,
+nonterminated declarations with current subsection 03/status 01, removes
+invalid, shared-provider and known-commercial hosts, and compiles the remaining
+hostnames. Filing websites are self-reported, not proof of domain ownership.
+Only EIN/domain associations are retained; officer and address fields are not.
+
+National Center for Charitable Statistics, Urban Institute
+---------------------------------------------------------
+Larger-charity website declarations are extracted from the prepared Form 990
+and 990-EZ header tables in NCCS IRS 990 Efile Data, Jesse Lecy, 2026, v3.1:
+https://urbaninstitute.github.io/nccs/catalogs/catalog-efile-v3_1.html
+
+These cleaned NCCS data are licensed under Open Data Commons Attribution
+License v1.0 (ODC-BY): https://opendatacommons.org/licenses/by/1-0/
+Dataset terms: https://urbaninstitute.github.io/nccs/terms/
+
+Quer.ee combines recent declarations with 990-N, selects the latest tax period
+and filing timestamp, checks current IRS charity status, removes invalid,
+shared and known-commercial hosts, and compiles a hostname index. Only
+EIN/domain associations are retained. The underlying IRS data are public domain.
+
+Wikidata
+--------
+Company, organisation-homepage, university, government, charity, museum and
+botanical-garden website data are derived from Wikidata queries. Wikidata
+structured data are dedicated to the public domain
+under CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Quer.ee selects specified entity classes, normalizes website domains, removes
+platforms and nonexclusive hosts, and compiles the remaining domains.
+Conflicting organisation claims involving a company's non-homepage address are
+resolved in Quer.ee's manually reviewed TSV, licensed with the project under
+GPL-3.0-only. Builds read those decisions directly; other records keep their
+source classification. Unresolved conflicting claims are omitted from the broader
+import. Original supplier records and query recipes are retained as evidence.
+
+YC company directory
+--------------------
+Company website, ID, status and nonprofit fields come from the yc-oss/api
+mirror of Y Combinator's company directory:
+https://github.com/yc-oss/api
+https://yc-oss.github.io/api/companies/all.json
+Upstream directory: https://www.ycombinator.com/companies
+
+The mirror declares no license. Quer.ee selects Active/Public records whose
+nonprofit field is false, normalizes website domains, removes shared hosts,
+and compiles the remaining domains into its hostname index.
+
+Punycode.js
+-----------
+The bundled src/lib/punycode.js is Punycode.js 1.3.2 by Mathias Bynens:
+https://github.com/mathiasbynens/punycode.js
+https://github.com/mathiasbynens/punycode.js/blob/v1.3.2/LICENSE-MIT.txt
+Licensed under MIT:
+
+Copyright Mathias Bynens <https://mathiasbynens.be/>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+AdGuard Base filter
+-------------------
+The pinned AdGuard Base filter snapshot is from AdGuard Filters:
+https://github.com/AdguardTeam/AdguardFilters
+It is licensed under GPLv3; LICENSE.txt contains the GPLv3 terms.
+
+HaGeZi Referral Blocklist
+-------------------------
+Affiliate and tracking referral hostname data come from HaGeZi's Referral
+Blocklist:
+https://github.com/hagezi/dns-blocklists
+
+The source is licensed under GPLv3; LICENSE.txt contains the GPLv3 terms.
+The snapshot and importer are retained under research/referral-lists in the
+source archive. They are not used by the Firefox extension.
+
+HaGeZi Pop-Up Ads
+----------------
+The unchanged Adblock source is included as assets/queree/popupads.txt:
+https://github.com/hagezi/dns-blocklists
+Pinned input: adblock/popupads.txt at commit
+eb7db8ed27237af2f3c0cb79c9c735e3e076dbad.
+It is licensed under GPLv3; LICENSE.txt contains the GPLv3 terms.
+Quer.ee loads it through uBO's native asset and filtering machinery.
+
+EasyList Spanish
+----------------
+The bundled fallback snapshot comes from:
+https://easylist-downloads.adblockplus.org/easylistspanish.txt
+It retains its source header and license link. EasyList's dual GPLv3/CC-BY-SA
+licensing is documented at https://easylist.to/pages/licence.html.
+The runtime subscription uses uBO's existing EasyList Spanish asset, with the
+bundled snapshot available when the remote source is unavailable.
+
+HaGeZi NSFW
+------------
+Adult-content hostnames come from HaGeZi's NSFW domain list:
+https://github.com/hagezi/dns-blocklists
+Pinned input: wildcard/nsfw-onlydomains.txt at commit
+81bbd1b9009893d65358146b23282647634c26be.
+
+The source is licensed under GPLv3; LICENSE.txt contains the GPLv3 terms.
+The unchanged raw input is included in the source archive under
+assets/queree/adult-lists/, not in the installed extension.
+Quer.ee preserves listed hostname and tenant boundaries and compiles these
+domains into its existing hostname trie and server source taxonomy. This is an
+adult-eligibility rule, not an ownership category or a navigation blocklist.
+
+PeterDaveHello URL Shorteners
+-----------------------------
+General-purpose URL-shortener hostname data come from:
+https://github.com/PeterDaveHello/url-shorteners
+
+The source is licensed under CC-BY-SA-4.0. Its metadata is retained with the
+archived referral-list research, not used by the Firefox extension.
+
+Commerce fingerprints
+---------------------
+Quer.ee's generated commerce fingerprints use these preferred sources:
+
+- OpenTechalyzer by Houseofmvps, MIT License:
+  https://github.com/Houseofmvps/opentechalyzer
+- WebAppAnalyzer by Enthec, GPLv3:
+  https://github.com/enthec/webappanalyzer
+
+Their exact source snapshots and license files are included in the
+corresponding Quer.ee source archive.
+
+Super SEO Spam Suppressor
+-------------------------
+Quer.ee uses the upstream Fake stores domain category, Advertorials URL category,
+and Affiliate marketing English/French/Multi domain files, not the combined
+blocklist or its AI-authorship restrictions:
+https://github.com/NotaInutilis/Super-SEO-Spam-Suppressor
+
+These selected sources use the upstream custom permissive license, version 1,
+October 2013. Its complete, unchanged text is included as
+assets/queree/website-lists/LICENSE in the extension and source archive. The raw
+selected source files are retained there only in the source archive.
+Fake-store domains are compiled
+into the existing hostname index; advertorial paths preserve upstream uBlacklist
+match-pattern scope. Source membership is attributed evidence, not an independent
+finding that every destination is fraudulent or every article was paid for.
+Affiliate-publisher domains supply Advertising signals and site-wide index
+exclusions, labeled Listed affiliate publisher, not proof of ads on each page.
+
+Soteria nou affiliate endpoints
+------------------------------
+Quer.ee checks visible outbound page links against the complete affiliate.txt
+file from https://github.com/soteria-nou/domain-list (136 domains in this snapshot).
+The upstream data permits non-commercial copying and distribution with the
+original URL included; it is not licensed as GPL. Its unchanged source and full
+upstream README, including those terms, are included under
+assets/queree/website-lists/affiliate-links/. The common revision, source URLs
+and byte hashes are recorded in the source archive's website-list provenance.
+Generated affiliateLinkSources data retains the same upstream terms.
+Matches supply Advertising signals labeled Affiliate or tracked link, not a
+claim of commission payment or a publisher-wide classification. No entries
+have been hand-pruned, including the upstream file's broader business addresses.
+
+uBlacklist match-pattern
+------------------------
+The unchanged @ublacklist/match-pattern 2.0.0 code by iorate matches the native
+URL patterns: https://github.com/iorate/ublacklist
+It is licensed under MIT. The complete notice is included alongside the code
+under js/queree/vendor/ublacklist/LICENSE in the XPI, and under
+src/js/queree/vendor/ublacklist/LICENSE in the source archive.
+
+Ghostery TrackerDB (downloaded data)
+-----------------------------------
+The extension downloads selected advertising-tracking request rules directly
+from Ghostery's published TrackerDB data:
+https://github.com/ghostery/trackerdb
+Copyright 2017 Ghostery GmbH. Downloaded data license: CC BY-NC-SA 4.0:
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+No TrackerDB dataset or Ghostery matcher code is bundled in this extension.
+The downloaded data retains its own license, not the extension's GPL license.

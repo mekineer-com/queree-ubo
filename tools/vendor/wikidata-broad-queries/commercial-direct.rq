@@ -1,0 +1,11 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?item ?label ?website ?matchedType ?nonprofit ?government ?education WHERE {
+  ?item wdt:P31 wd:Q21980538 . BIND(wd:Q21980538 AS ?matchedType)
+  ?item wdt:P856 ?website .
+  OPTIONAL { ?item rdfs:label ?label . FILTER(LANG(?label) = "en") }
+  BIND(EXISTS { ?item (wdt:P31|wdt:P1454)/wdt:P279* wd:Q163740 } AS ?nonprofit)
+  BIND(EXISTS { ?item wdt:P31/wdt:P279* wd:Q2659904 } AS ?government)
+  BIND(EXISTS { ?item wdt:P31/wdt:P279* wd:Q2385804 } AS ?education)
+}

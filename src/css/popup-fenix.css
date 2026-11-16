@@ -65,6 +65,7 @@ hr {
     display: flex;
     justify-content: space-between;
     margin: var(--popup-gap-extra-thin) 0;
+    position: relative;
     }
 #switch {
     color: var(--popup-power-ink);
@@ -207,12 +208,59 @@ body.needSave #revertRules {
     margin-top: 6px;
     text-align: center;
     }
+#basicTools [href="dashboard.html"] > svg {
+    fill: var(--popup-power-ink);
+    filter: drop-shadow(0 0 2px rgb(var(--popup-power-ink-rgb) / 55%));
+    animation: queree-settings-glow 2.4s ease-in-out infinite;
+    }
+@keyframes queree-settings-glow {
+    50% {
+        filter: drop-shadow(0 0 6px rgb(var(--popup-power-ink-rgb) / 90%));
+        }
+    }
+@media (prefers-reduced-motion: reduce) {
+    #basicTools [href="dashboard.html"] > svg {
+        animation: none;
+        }
+    }
 :root.mobile.no-tooltips .toolRibbon .tool {
     font-size: 1.6em;
     }
 
 #basicTools .needPick:not(.canPick) {
     visibility: hidden;
+    }
+
+#quereeControls {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: calc(var(--popup-gap-thin) + var(--popup-gap-extra-thin));
+    position: absolute;
+    top: calc(var(--popup-gap-thin) + var(--popup-gap-extra-thin));
+    z-index: 1;
+    }
+#quereeSwitch {
+    background: transparent;
+    border: 0;
+    font-size: inherit;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    }
+#quereeSwitch > img {
+    block-size: 3em;
+    inline-size: 3em;
+    }
+#quereeSwitch[aria-pressed="false"] > img,
+#quereeSwitch:disabled > img {
+    filter: grayscale(1);
+    opacity: 0.45;
+    }
+#quereeWebsite {
+    font-size: 0.85em;
+    margin-top: 0.25em;
     }
 
 #extraTools .fa-icon {
@@ -772,6 +820,9 @@ body:not([data-more*="e"]) [data-more="e"] {
     }
 :root.desktop .tool:hover {
     background-color: var(--popup-toolbar-surface-hover);
+    }
+:root.desktop #quereeSwitch:not(:disabled):hover {
+    filter: brightness(1.2);
     }
 :root.desktop #moreOrLess > span:hover {
     background-color: var(--surface-2);

@@ -32,6 +32,11 @@ import {
     permanentSwitches,
     permanentURLFiltering,
 } from './filtering-engines.js';
+import {
+    popupAdsAsset,
+    popupAdsAssetKey,
+    preserveAdProfileFallbacks,
+} from './queree/ad-profile.js';
 import { ubolog, ubologSet } from './console.js';
 
 import cosmeticFilteringEngine from './cosmetic-filtering.js';
@@ -45,6 +50,7 @@ import { redirectEngine } from './redirect-engine.js';
 import staticExtFilteringEngine from './static-ext-filtering.js';
 import { staticFilteringReverseLookup } from './reverselookup.js';
 import staticNetFilteringEngine from './static-net-filtering.js';
+import { trackingAssetKey } from './queree/tracking-sources.js';
 import µb from './background.js';
 
 /******************************************************************************/
@@ -471,7 +477,11 @@ onBroadcast(msg => {
     const newSet = new Set(newKeys);
     // Purge unused filter lists from cache.
     for ( const oldKey of oldKeys ) {
-        if ( newSet.has(oldKey) === false ) {
+        if (
+            newSet.has(oldKey) === false &&
+            (this.userSettings.quereeEnabled !== true ||
+                this.quereeFilterLists.has(oldKey) === false)
+        ) {
             this.removeFilterList(oldKey);
         }
     }
@@ -506,7 +516,10 @@ onBroadcast(msg => {
             if ( pos !== -1 ) {
                 importedLists.splice(pos, 1);
             }
-            this.removeFilterList(assetKey);
+            if ( this.userSettings.quereeEnabled !== true ||
+                this.quereeFilterLists.has(assetKey) === false ) {
+                this.removeFilterList(assetKey);
+            }
         }
     }
 
@@ -733,6 +746,17 @@ onBroadcast(msg => {
 
 /******************************************************************************/
 
+µb.loadBadLists = async function(options) {
+    if ( this.badLists.size !== 0 ) { return; }
+    const badlists = await io.get('ublock-badlists', options);
+    for ( const line of badlists.content.split(/\s*[\n\r]+\s*/) ) {
+        if ( line === '' || line.startsWith('#') ) { continue; }
+        const fields = line.split(/\s+/);
+        const remove = fields.length === 2;
+        this.badLists.set(fields[0], remove);
+    }
+};
+
 µb.getAvailableLists = async function() {
     const newAvailableLists = {};
 
@@ -744,6 +768,7 @@ onBroadcast(msg => {
     };
 
     // Custom filter lists
+    const importedLists = this.userSettings.importedLists.join('\n');
     const importedListKeys = new Set(
         this.listKeysFromCustomFilterLists(this.userSettings.importedLists)
     );
@@ -756,27 +781,23 @@ onBroadcast(msg => {
             submitter: 'user',
             title: '',
         };
+        preserveAdProfileFallbacks({ [listKey]: asset });
         newAvailableLists[listKey] = asset;
         io.registerAssetSource(listKey, asset);
     }
 
     // Load previously saved available lists -- these contains data
     // computed at run-time, we will reuse this data if possible
-    const [ bin, registeredAssets, badlists ] = await Promise.all([
+    const [ bin, registeredAssets ] = await Promise.all([
         Object.keys(this.availableFilterLists).length !== 0
             ? { availableFilterLists: this.availableFilterLists }
             : vAPI.storage.get('availableFilterLists'),
         io.metadata(),
-        this.badLists.size === 0 ? io.get('ublock-badlists') : false,
+        this.loadBadLists(),
     ]);
-
-    if ( badlists instanceof Object ) {
-        for ( const line of badlists.content.split(/\s*[\n\r]+\s*/) ) {
-            if ( line === '' || line.startsWith('#') ) { continue; }
-            const fields = line.split(/\s+/);
-            const remove = fields.length === 2;
-            this.badLists.set(fields[0], remove);
-        }
+    // A subscription may have been imported or removed while metadata loaded.
+    if ( importedLists !== this.userSettings.importedLists.join('\n') ) {
+        return this.getAvailableLists();
     }
 
     const oldAvailableLists = bin && bin.availableFilterLists || {};
@@ -846,6 +867,11 @@ onBroadcast(msg => {
         if ( asset.submitter !== 'user' ) { continue; }
         if ( importedListKeys.has(assetKey) ) { continue; }
         selectedListset.delete(assetKey);
+        if ( assetKey === popupAdsAssetKey ) {
+            Object.assign(asset, popupAdsAsset);
+            io.registerAssetSource(assetKey, popupAdsAsset);
+            continue;
+        }
         delete newAvailableLists[assetKey];
         this.removeFilterList(assetKey);
         io.unregisterAssetSource(assetKey);
@@ -1020,7 +1046,7 @@ onBroadcast(msg => {
 
 /******************************************************************************/
 
-µb.getCompiledFilterList = async function(assetKey) {
+µb.getCompiledFilterList = async function(assetKey, options = {}) {
     const compiledPath = `compiled/${assetKey}`;
 
     // https://github.com/uBlockOrigin/uBlock-issues/issues/1365
@@ -1043,7 +1069,7 @@ onBroadcast(msg => {
     }
 
     const rawDetails = await io.get(assetKey, {
-        favorLocal: this.readyToFilter !== true,
+        favorLocal: options.favorLocal ?? (this.readyToFilter !== true),
         silent: true,
     });
     // Compiling an empty string results in an empty string.
@@ -1591,14 +1617,20 @@ onBroadcast(msg => {
 /******************************************************************************/
 
 µb.assetObserver = function(topic, details) {
+    const quereeProfileAsset = this.quereeFilterLists.has(details.assetKey);
+    const quereeDataAsset = details.assetKey === trackingAssetKey;
+    const inUse = this.selectedFilterLists.includes(details.assetKey) ||
+        (this.userSettings.quereeEnabled === true && quereeProfileAsset);
     // Do not update filter list if not in use.
     // Also, ignore really bad lists, i.e. those which should not even be
     // fetched from a remote server.
     if ( topic === 'before-asset-updated' ) {
+        if ( quereeDataAsset ) { return this.userSettings.quereeEnabled === true; }
         if ( details.type === 'filters' ) {
             if (
-                Object.hasOwn(this.availableFilterLists, details.assetKey) === false ||
-                this.selectedFilterLists.indexOf(details.assetKey) === -1 ||
+                (Object.hasOwn(this.availableFilterLists, details.assetKey) === false &&
+                    quereeProfileAsset === false) ||
+                inUse === false ||
                 this.badLists.get(details.assetKey)
             ) {
                 return;
@@ -1612,9 +1644,9 @@ onBroadcast(msg => {
         // Skip selfie-related content.
         if ( details.assetKey.startsWith('selfie/') ) { return; }
         const cached = typeof details.content === 'string' && details.content !== '';
-        if ( Object.hasOwn(this.availableFilterLists, details.assetKey) ) {
+        if ( Object.hasOwn(this.availableFilterLists, details.assetKey) || quereeProfileAsset ) {
             if ( cached ) {
-                if ( this.selectedFilterLists.indexOf(details.assetKey) !== -1 ) {
+                if ( this.selectedFilterLists.indexOf(details.assetKey) !== -1 || quereeProfileAsset ) {
                     this.extractFilterListMetadata(
                         details.assetKey,
                         details.content
@@ -1646,7 +1678,10 @@ onBroadcast(msg => {
         // https://github.com/gorhill/uBlock/issues/2585
         //   Whenever an asset is overwritten, the current selfie is quite
         //   likely no longer valid.
-        this.selfieManager.destroy();
+        if ( (quereeProfileAsset === false && quereeDataAsset === false) ||
+            this.selectedFilterLists.includes(details.assetKey) ) {
+            this.selfieManager.destroy();
+        }
         return;
     }
 
@@ -1663,14 +1698,27 @@ onBroadcast(msg => {
     // Reload all filter lists if needed.
     if ( topic === 'after-assets-updated' ) {
         if ( details.assetKeys.length !== 0 ) {
+            const mainEngineChanged = details.assetKeys.some(key =>
+                (this.quereeFilterLists.has(key) === false && key !== trackingAssetKey) ||
+                this.selectedFilterLists.includes(key)
+            );
             // https://github.com/gorhill/uBlock/pull/2314#issuecomment-278716960
-            if (
-                this.hiddenSettings.userResourcesLocation !== 'unset' ||
-                vAPI.webextFlavor.soup.has('devbuild')
-            ) {
-                redirectEngine.invalidateResourcesSelfie(io);
+            if ( mainEngineChanged ) {
+                if (
+                    this.hiddenSettings.userResourcesLocation !== 'unset' ||
+                    vAPI.webextFlavor.soup.has('devbuild')
+                ) {
+                    redirectEngine.invalidateResourcesSelfie(io);
+                }
+                this.loadFilterLists();
+            } else {
+                broadcast({
+                    what: 'staticFilteringDataChanged',
+                    parseCosmeticFilters: this.userSettings.parseAllABPHideFilters,
+                    ignoreGenericCosmeticFilters: this.userSettings.ignoreGenericCosmeticFilters,
+                    listKeys: details.assetKeys,
+                });
             }
-            this.loadFilterLists();
         }
         this.scheduleAssetUpdater();
         broadcast({
@@ -1696,6 +1744,7 @@ onBroadcast(msg => {
 
     if ( topic === 'assets.json-updated' ) {
         const { newDict, oldDict } = details;
+        preserveAdProfileFallbacks(newDict);
         if ( newDict['assets.json'] === undefined ) { return; }
         if ( oldDict['assets.json'] === undefined ) { return; }
         const newDefaultListset = new Set(newDict['assets.json'].defaultListset || []);

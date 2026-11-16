@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="color-scheme" content="light dark" />
+<title>Quer.ee</title>
+<link rel="stylesheet" type="text/css" href="css/themes/default.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/fa-icons.css">
+<link rel="stylesheet" type="text/css" href="css/dashboard-common.css">
+<link rel="stylesheet" type="text/css" href="css/settings.css">
+<link rel="stylesheet" type="text/css" href="css/queree.css">
+</head>
+
+<body>
+<section class="queree-intro">
+    <div class="queree-relation">uBO+Q</div>
+    <h1>Search Filter &amp; Content Blocker</h1>
+    <p>uBlock Origin + Quer.ee (uBO+Q) is a modified version of <a href="https://github.com/gorhill/uBlock" target="_blank" rel="noopener">uBlock Origin</a>, maintained by Team GhostMaker. It keeps uBlock Origin's content blocking and adds Quer.ee filtering to Google and Bing results. We are not affiliated with or endorsed by the uBlock Origin project.</p>
+    <p>Filtering opens result websites in background tabs: disposable containers on desktop, reusable private tabs on Android. By default, Quer.ee removes desktop inspection-only visits from history when it can distinguish them from your own browsing.</p>
+    <p>Nothing is contributed to Quer.ee unless you save an invitation key and turn contribution on.</p>
+    <nav aria-label="Quer.ee information">
+        <a href="https://quer.ee/extension/" target="_blank" rel="noopener">Guide</a>
+        <a href="https://quer.ee/privacy/" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://quer.ee/about/#contact" target="_blank" rel="noopener">Support</a>
+    </nav>
+</section>
+
+<div class="fieldset">
+    <div class="fieldset-header">Quer.ee</div>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeEnabled" data-setting-type="bool"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Filter Google and Bing results locally</span></label></div>
+    <div class="queree-search-options">
+    <section aria-labelledby="queree-categories-heading">
+    <h2 id="queree-categories-heading" class="fieldset-header">Site categories</h2>
+    <p class="synopsis">Choose which kinds of sites to include.</p>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeIncludePublicInterestOrganizations" data-setting-type="bool"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Public-interest organizations</span></label></div>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeIncludeGovernmentEducation" data-setting-type="bool"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Government and education</span></label></div>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeIncludeProfessionalPublications" data-setting-type="bool"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Professional publications</span></label></div>
+    <div class="li queree-corporate-option"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeIncludeCommercialCorporate" data-setting-type="bool"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Corporations</span></label><span id="quereeCorporateIndicator" class="queree-corporate-indicator" role="img" aria-label="Corporate sites are included." tabindex="-1">!</span></div>
+    <section class="queree-personal-categories" aria-labelledby="queree-personal-heading">
+        <h3 id="queree-personal-heading">Personal categories</h3>
+        <p class="synopsis">Checked categories show matching pages; unchecked categories hide them without inspection. These choices override other search filters.</p>
+        <fieldset id="quereePersonalControls" disabled>
+            <fieldset id="quereePersonalListControls">
+                <div id="quereePersonalList"></div>
+                <button id="quereeAddCategory" type="button">Add category</button>
+            </fieldset>
+            <form id="quereePersonalEditor" hidden>
+                <label for="quereeCategoryName">Category name</label>
+                <input id="quereeCategoryName" type="text" required autocomplete="off" aria-describedby="quereePersonalStatus">
+                <label for="quereeCategoryEntries">Pages or sites, one per line</label>
+                <textarea id="quereeCategoryEntries" rows="5" placeholder="https://site.com/page&#10;site.com/*" spellcheck="false" aria-describedby="quereePersonalStatus"></textarea>
+                <div class="queree-category-actions">
+                    <button type="submit">Save category</button>
+                    <button id="quereeCancelCategory" type="button">Cancel</button>
+                </div>
+            </form>
+        </fieldset>
+        <p id="quereePersonalStatus" role="status" aria-live="polite"></p>
+    </section>
+    </section>
+    <section aria-labelledby="queree-characteristics-heading">
+    <h2 id="queree-characteristics-heading" class="fieldset-header">Site characteristics</h2>
+    <p class="synopsis">Apply these conditions to whichever categories you include.</p>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeRequireSingleDomain" data-setting-type="bool" aria-describedby="queree-single-domain-description"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Single-domain pages</span></label></div>
+    <p id="queree-single-domain-description" class="synopsis">Loads resources only from its own domain. Links to other websites are fine.</p>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeExcludeAdvertisingSignals" data-setting-type="bool" aria-describedby="queree-advertising-description"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Advertising signals</span></label></div>
+    <div class="li synopsis" id="queree-advertising-description">Hide pages with ads, links marked as paid, or listed paid articles.</div>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeExcludeCrossSiteTracking" data-setting-type="bool" aria-describedby="queree-tracking-description"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Cross-site tracking</span></label></div>
+    <div class="li synopsis" id="queree-tracking-description">Hide pages with signals used to track visitors across unrelated websites.</div>
+    <div class="li"><label><span class="input checkbox"><input type="checkbox" data-setting-name="quereeExcludeShoppingSignals" data-setting-type="bool" aria-describedby="queree-shopping-description"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Shopping signals</span></label></div>
+    <div class="li synopsis" id="queree-shopping-description">Hide shopping-list matches, shopping-capable software or product-and-price offers.</div>
+    </section>
+    </div>
+    <div class="li"><label>Simultaneous inspections&nbsp;<input type="number" min="1" max="8" data-setting-name="quereeSimultaneousInspections" data-setting-type="value"></label></div>
+    <div class="li"><label><span class="input checkbox"><input id="quereeCleanHistory" type="checkbox" data-setting-name="quereeCleanHistory" data-setting-type="bool"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Remove inspection-only history when safe</span></label></div>
+    <div class="li synopsis">Known prior and ordinary visits are kept; an indistinguishable simultaneous visit may also be removed.</div>
+    <div class="li" id="quereeHistoryStatus" role="status"></div>
+    <div class="li"><label><span class="input checkbox"><input id="quereeContribute" type="checkbox" disabled><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span>Contribute inspected results to Quer.ee</span></label></div>
+    <div class="li synopsis">Shares inspected addresses, page and result titles, eligible page text, result descriptions, single-domain and shopping observations, and exclusions with filter lists, rules and blocked hosts. To save time, the extension sends result links to Quer.ee and reuses recent checks from other contributors when available.</div>
+    <p id="quereeRequestKey" hidden><a href="mailto:support@quer.ee?subject=Quer.ee%20invitation%20request">Request an invitation key</a> (support@quer.ee)</p>
+    <div class="li"><label>Invitation key&nbsp;<input id="quereeInvitationKey" type="password" autocomplete="off" spellcheck="false"></label>&nbsp;<button id="quereeSaveKey" type="button">Save key</button>&nbsp;<button id="quereeClearKey" type="button">Clear key</button></div>
+    <div class="li" id="quereeContributionStatus" role="status"></div>
+</div>
+
+<template id="quereePersonalRow">
+    <div class="li queree-category-row">
+        <label><span class="input checkbox"><input type="checkbox"><svg viewBox="0 0 24 24"><path d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg></span><span class="queree-category-name"></span></label>
+        <button type="button" class="queree-category-edit">Edit</button>
+        <button type="button" class="queree-category-delete">Delete</button>
+    </div>
+</template>
+
+<script src="js/fa-icons.js" type="module"></script>
+<script src="js/vapi.js"></script>
+<script src="js/vapi-common.js"></script>
+<script src="js/vapi-client.js"></script>
+<script src="js/theme.js" type="module"></script>
+<script src="js/i18n.js" type="module"></script>
+<script src="js/dashboard-common.js" type="module"></script>
+<script src="js/queree.js" type="module"></script>
+</body>
+</html>

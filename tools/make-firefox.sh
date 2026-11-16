@@ -8,11 +8,35 @@ echo "*** uBlock0.firefox: Creating web store package"
 
 BLDIR=dist/build
 DES="$BLDIR"/uBlock0.firefox
+package="${1-}"
+if [ "$package" = all ]; then
+    xpi="$BLDIR/uBlock0.firefox.xpi"
+elif [ -n "$package" ]; then
+    xpi="$BLDIR/uBlock0_$package.firefox.xpi"
+fi
+if [ -n "$package" ]; then
+    # An unsuccessful attempt must not leave a previous build at its target.
+    rm -f "$xpi" "$BLDIR/uBlock0.firefox.xpi"
+    mkdir -p "$BLDIR"
+    archive=$(mktemp "$(pwd)/$BLDIR/.queree-xpi.XXXXXX.zip")
+    rm "$archive"
+    trap 'rm -f "$archive"' EXIT
+    trap 'exit 1' HUP INT TERM
+fi
 mkdir -p $DES
 rm -rf $DES/*
 
+node tools/check-queree-generated.mjs
+
 echo "*** uBlock0.firefox: Copying common files"
 bash ./tools/copy-common-files.sh $DES
+rm "$DES"/js/queree/vendor/{adult,commercial,corporate,institutional,public-interest}-domains.js
+rm -r "$DES/assets/queree/adult-lists" "$DES/assets/queree/website-lists/fake-stores" \
+    "$DES/assets/queree/website-lists/affiliate-publishers"
+rm "$DES/assets/queree/website-lists/advertorials.txt" \
+    "$DES/assets/queree/website-lists/provenance.json"
+mkdir -p "$DES"/assets/queree
+cp src/assets/queree/domain-index.bin "$DES"/assets/queree/
 
 # Firefox-specific
 echo "*** uBlock0.firefox: Copying firefox-specific files"
@@ -28,17 +52,12 @@ rm $DES/img/icon_128.png
 echo "*** uBlock0.firefox: Generating meta..."
 python3 tools/make-firefox-meta.py $DES/
 
-if [ "$1" = all ]; then
+if [ -n "$package" ]; then
     echo "*** uBlock0.firefox: Creating package..."
     pushd $DES > /dev/null
-    zip ../$(basename $DES).xpi -qr *
+    zip "$archive" -qr *
     popd > /dev/null
-elif [ -n "$1" ]; then
-    echo "*** uBlock0.firefox: Creating versioned package..."
-    pushd $DES > /dev/null
-    zip ../$(basename $DES).xpi -qr *
-    popd > /dev/null
-    mv "$BLDIR"/uBlock0.firefox.xpi "$BLDIR"/uBlock0_"$1".firefox.xpi
+    mv "$archive" "$xpi"
 fi
 
 echo "*** uBlock0.firefox: Package done."

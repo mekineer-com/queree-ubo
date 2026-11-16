@@ -181,7 +181,6 @@ async function showSupportData() {
     cmEditor.clearHistory();
 
     addDetailsToReportURL('filterReport', true);
-    addDetailsToReportURL('bugReport', true);
 }
 
 /******************************************************************************/
