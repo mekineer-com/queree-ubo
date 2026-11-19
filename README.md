@@ -5,7 +5,7 @@ It keeps uBlock Origin's content blocking and adds Quer.ee filtering to Google
 and Bing results. We are not affiliated with or endorsed by the uBlock Origin
 project.
 
-**Signed download pending.**
+**[Download the Mozilla-signed 2.2.68 build](https://quer.ee/extension/)** (unlisted; install updates manually).
 
 For this modified version, use the [guide](https://quer.ee/extension/),
 [support](https://quer.ee/about/#contact), [privacy information](QUEREE_PRIVACY.md)
